@@ -1,12 +1,12 @@
-[![Startrz Watches Screenshot](https://github.com/mohammadoftadeh/repo-assets/blob/main/shopco-cover.png?raw=true)](https://next-ecommerce-shopco.vercel.app/)
+[![Belluxe Atelier Screenshot](https://github.com/mohammadoftadeh/repo-assets/blob/main/shopco-cover.png?raw=true)](https://next-ecommerce-shopco.vercel.app/)
 
-# Startrz Watches
+# Belluxe Atelier
 
-Startrz Watches is an open-source project that converts a Figma design of an e-commerce website into a fully responsive front-end application for luxury timepieces. It utilizes **Next.js 14 App Router**, **TypeScript**, **Tailwind CSS**, **Redux**, **Framer Motion**, and **ShadCN UI** to deliver a modern, scalable, and optimized solution based on industry standards.
+Belluxe Atelier is an open-source project that converts a Figma design of an e-commerce website into a fully responsive front-end application for luxury timepieces. It utilizes **Next.js 14 App Router**, **TypeScript**, **Tailwind CSS**, **Redux**, **Framer Motion**, and **ShadCN UI** to deliver a modern, scalable, and optimized solution based on industry standards.
 
 ## Table of Contents
 
-- [Startrz Watches](#startrz-watches)
+- [Belluxe Atelier](#belluxe-atelier)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Demo](#demo)
@@ -22,13 +22,13 @@ Startrz Watches is an open-source project that converts a Figma design of an e-c
 
 ## Overview
 
-Startrz Watches bridges the gap between design and development by converting Figma designs into production-ready code for luxury watch retail. The project follows best practices for **SEO**, **performance optimization**, and **accessibility**, making it a perfect foundation for developers looking to create scalable and maintainable watch e-commerce front-ends.
+Belluxe Atelier bridges the gap between design and development by converting Figma designs into production-ready code for luxury watch retail. The project follows best practices for **SEO**, **performance optimization**, and **accessibility**, making it a perfect foundation for developers looking to create scalable and maintainable watch e-commerce front-ends.
 
 ## Demo
 
-Check out the live demo: [Startrz Watches Demo](https://next-ecommerce-shopco.vercel.app/)
+Check out the live demo: [Belluxe Atelier Demo](https://next-ecommerce-shopco.vercel.app/)
 
-<!-- [![Startrz Watches Screenshot](https://github.com/mohammadoftadeh/repo-assets/blob/main/shopco-cover.png?raw=true)](https://next-ecommerce-shopco.vercel.app/) -->
+<!-- [![Belluxe Atelier Screenshot](https://github.com/mohammadoftadeh/repo-assets/blob/main/shopco-cover.png?raw=true)](https://next-ecommerce-shopco.vercel.app/) -->
 
 ## Features
 
@@ -54,7 +54,7 @@ Check out the live demo: [Startrz Watches Demo](https://next-ecommerce-shopco.ve
 
 ## Installation
 
-To get started with Startrz Watches locally, follow these steps:
+To get started with Belluxe Atelier locally, follow these steps:
 
 1. **Clone the repository:**
 
@@ -96,7 +96,7 @@ To get started with Startrz Watches locally, follow these steps:
 ## Project Structure
 
 ```bash
-Startrz Watches/
+Belluxe Atelier/
 │
 ├── public/                # Static assets
 ├── src/
@@ -121,7 +121,7 @@ Startrz Watches/
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute, Please follow these steps to contribute to Startrz Watches:
+Contributions are welcome! If you'd like to contribute, Please follow these steps to contribute to Belluxe Atelier:
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature/your-feature-name`).
