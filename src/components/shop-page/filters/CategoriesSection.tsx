@@ -10,23 +10,23 @@ type Category = {
 const categoriesData: Category[] = [
   {
     title: "Sport Watches",
-    slug: "/shop?category=sport-watches",
+    slug: "/shop",
   },
   {
     title: "Dress Watches",
-    slug: "/shop?category=dress-watches",
+    slug: "/shop",
   },
   {
     title: "Smart Watches",
-    slug: "/shop?category=smart-watches",
+    slug: "/shop",
   },
   {
     title: "Chronographs",
-    slug: "/shop?category=chronographs",
+    slug: "/shop",
   },
   {
     title: "Luxury Watches",
-    slug: "/shop?category=luxury-watches",
+    slug: "/shop",
   },
 ];
 

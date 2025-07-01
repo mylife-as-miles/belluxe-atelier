@@ -23,25 +23,25 @@ const data: NavMenu = [
       {
         id: 11,
         label: "Men's Watches",
-        url: "/shop#mens-watches",
+        url: "/shop",
         description: "Sophisticated timepieces designed for the modern gentleman",
       },
       {
         id: 12,
         label: "Women's Watches",
-        url: "/shop#womens-watches",
+        url: "/shop",
         description: "Elegant and stylish watches crafted for women",
       },
       {
         id: 13,
         label: "Smart Watches",
-        url: "/shop#smart-watches",
+        url: "/shop",
         description: "Advanced technology meets classic design",
       },
       {
         id: 14,
         label: "Luxury Collection",
-        url: "/shop#luxury-collection",
+        url: "/shop",
         description: "Premium timepieces for the discerning collector",
       },
     ],
@@ -50,21 +50,21 @@ const data: NavMenu = [
     id: 2,
     type: "MenuItem",
     label: "On Sale",
-    url: "/shop#on-sale",
+    url: "/shop",
     children: [],
   },
   {
     id: 3,
     type: "MenuItem",
     label: "New Arrivals",
-    url: "/shop#new-arrivals",
+    url: "/shop",
     children: [],
   },
   {
     id: 4,
     type: "MenuItem",
     label: "Brands",
-    url: "/shop#brands",
+    url: "/shop",
     children: [],
   },
 ];
@@ -131,7 +131,7 @@ const TopNavbar = () => {
             />
           </Link>
           <CartBtn />
-          <Link href="/#signin" className="p-1">
+          <Link href="/shop" className="p-1">
             <Image
               priority
               src="/icons/user.svg"

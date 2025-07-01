@@ -16,19 +16,19 @@ type WatchStyle = {
 const watchStylesData: WatchStyle[] = [
   {
     title: "Sport",
-    slug: "/shop?style=sport",
+    slug: "/shop",
   },
   {
     title: "Luxury",
-    slug: "/shop?style=luxury",
+    slug: "/shop",
   },
   {
     title: "Smart",
-    slug: "/shop?style=smart",
+    slug: "/shop",
   },
   {
     title: "Classic",
-    slug: "/shop?style=classic",
+    slug: "/shop",
   },
 ];
 
