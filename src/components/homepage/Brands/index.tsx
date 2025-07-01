@@ -3,23 +3,23 @@ import React from "react";
 
 const brandsData: { id: string; srcUrl: string }[] = [
   {
-    id: "versace",
+    id: "rolex",
     srcUrl: "/icons/versace-logo.svg",
   },
   {
-    id: "zara",
+    id: "omega",
     srcUrl: "/icons/zara-logo.svg",
   },
   {
-    id: "gucci",
+    id: "tag-heuer",
     srcUrl: "/icons/gucci-logo.svg",
   },
   {
-    id: "prada",
+    id: "breitling",
     srcUrl: "/icons/prada-logo.svg",
   },
   {
-    id: "calvin-klein",
+    id: "seiko",
     srcUrl: "/icons/calvin-klein-logo.svg",
   },
 ];

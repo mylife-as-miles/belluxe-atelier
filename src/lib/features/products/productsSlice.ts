@@ -15,10 +15,10 @@ interface ProductsState {
 // Define the initial state using that type
 const initialState: ProductsState = {
   colorSelection: {
-    name: "Brown",
-    code: "bg-[#4F4631]",
+    name: "Black",
+    code: "bg-black",
   },
-  sizeSelection: "Large",
+  sizeSelection: "42mm",
 };
 
 export const productsSlice = createSlice({

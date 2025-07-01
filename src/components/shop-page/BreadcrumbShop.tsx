@@ -20,7 +20,7 @@ const BreadcrumbShop = () => {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>Shop</BreadcrumbPage>
+          <BreadcrumbPage>Watches</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

@@ -22,27 +22,27 @@ const data: NavMenu = [
     children: [
       {
         id: 11,
-        label: "Men's clothes",
-        url: "/shop#men-clothes",
-        description: "In attractive and spectacular colors and designs",
+        label: "Men's Watches",
+        url: "/shop#mens-watches",
+        description: "Sophisticated timepieces designed for the modern gentleman",
       },
       {
         id: 12,
-        label: "Women's clothes",
-        url: "/shop#women-clothes",
-        description: "Ladies, your style and tastes are important to us",
+        label: "Women's Watches",
+        url: "/shop#womens-watches",
+        description: "Elegant and stylish watches crafted for women",
       },
       {
         id: 13,
-        label: "Kids clothes",
-        url: "/shop#kids-clothes",
-        description: "For all ages, with happy and beautiful colors",
+        label: "Smart Watches",
+        url: "/shop#smart-watches",
+        description: "Advanced technology meets classic design",
       },
       {
         id: 14,
-        label: "Bags and Shoes",
-        url: "/shop#bag-shoes",
-        description: "Suitable for men, women and all tastes and styles",
+        label: "Luxury Collection",
+        url: "/shop#luxury-collection",
+        description: "Premium timepieces for the discerning collector",
       },
     ],
   },
@@ -84,7 +84,7 @@ const TopNavbar = () => {
               "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10",
             ])}
           >
-            BELLUXE ATELIER
+            STARTRZ WATCHES
           </Link>
         </div>
         <NavigationMenu className="hidden md:flex mr-2 lg:mr-7">
@@ -115,7 +115,7 @@ const TopNavbar = () => {
           <InputGroup.Input
             type="search"
             name="search"
-            placeholder="Search for products..."
+            placeholder="Search for watches..."
             className="bg-transparent placeholder:text-black/40"
           />
         </InputGroup>

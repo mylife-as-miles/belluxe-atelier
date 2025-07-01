@@ -7,20 +7,20 @@ export type SpecItem = {
 
 const specsData: SpecItem[] = [
   {
-    label: " Material composition",
-    value: "100% Cotton",
+    label: "Movement",
+    value: "Swiss Automatic",
   },
   {
-    label: "Care instructions",
-    value: "Machine wash warm, tumble dry",
+    label: "Case Material",
+    value: "Stainless Steel",
   },
   {
-    label: "Fit type",
-    value: "Classic Fit",
+    label: "Water Resistance",
+    value: "100m / 330ft",
   },
   {
-    label: "Pattern",
-    value: "Solid",
+    label: "Crystal",
+    value: "Sapphire Crystal",
   },
 ];
 

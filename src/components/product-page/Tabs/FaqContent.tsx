@@ -13,34 +13,34 @@ type FaqItem = {
 
 const faqsData: FaqItem[] = [
   {
-    question: "What is the material of the t-shirt?",
+    question: "What type of movement does this watch have?",
     answer:
-      "Provide details about the fabric type (e.g., cotton, polyester, blend), weight, and any specific features.",
+      "This watch features a Swiss automatic movement, providing precise timekeeping and a power reserve of approximately 42 hours.",
   },
   {
-    question: "What are the care instructions for the t-shirt?",
+    question: "Is this watch water resistant?",
     answer:
-      "Outline recommended washing, drying, and ironing methods to maintain quality and longevity.",
+      "Yes, this timepiece is water resistant up to 100 meters (330 feet), making it suitable for swimming and snorkeling.",
   },
   {
-    question: "What is the design or print on the t-shirt made of?",
+    question: "What materials are used in the construction?",
     answer:
-      "Explain the material used for the design (e.g., vinyl, screen print, embroidery) and its durability.",
+      "The case is crafted from premium stainless steel with a sapphire crystal glass for maximum durability and scratch resistance.",
   },
   {
-    question: "Is the t-shirt unisex or designed for specific genders?",
+    question: "Does this watch come with a warranty?",
     answer:
-      "Indicate whether the shirt is suitable for both men and women or targeted towards a particular gender.",
+      "Yes, all our watches come with a 2-year international warranty covering manufacturing defects.",
   },
   {
     question: "What are the shipping options and costs?",
     answer:
-      "Provide information about shipping methods, estimated delivery times, and associated fees.",
+      "We offer free worldwide shipping on all orders over $500. Express shipping options are available for faster delivery.",
   },
   {
-    question: "What is the return policy for the t-shirt?",
+    question: "What is the return policy for watches?",
     answer:
-      "Outline the return window, conditions, and refund or exchange procedures.",
+      "We offer a 30-day return policy for unworn watches in original condition with all packaging and documentation.",
   },
 ];
 

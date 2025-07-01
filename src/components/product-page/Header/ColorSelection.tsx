@@ -12,16 +12,16 @@ import { IoMdCheckmark } from "react-icons/io";
 
 const colorsData: Color[] = [
   {
-    name: "Brown",
-    code: "bg-[#4F4631]",
+    name: "Black",
+    code: "bg-black",
   },
   {
-    name: "Green",
-    code: "bg-[#314F4A]",
+    name: "Silver",
+    code: "bg-gray-400",
   },
   {
-    name: "Blue",
-    code: "bg-[#31344F]",
+    name: "Gold",
+    code: "bg-yellow-400",
   },
 ];
 
@@ -43,7 +43,7 @@ const ColorSelection = () => {
             type="button"
             className={cn([
               color.code,
-              "rounded-full w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center",
+              "rounded-full w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center border border-black/20",
             ])}
             onClick={() => dispatch(setColorSelection(color))}
           >

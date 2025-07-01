@@ -74,11 +74,11 @@ const Footer = () => {
                   "text-[28px] lg:text-[32px] mb-6",
                 ])}
               >
-                BELLUXE ATELIER
+                STARTRZ WATCHES
               </h1>
               <p className="text-black/60 text-sm mb-9">
-                We have clothes that suits your style and which you're proud to
-                wear. From women to men.
+                We have timepieces that suit your style and which you're proud to
+                wear. From luxury to sport watches for everyone.
               </p>
               <div className="flex items-center">
                 {socialsData.map((social) => (
@@ -103,20 +103,20 @@ const Footer = () => {
           <hr className="h-[1px] border-t-black/10 mb-6" />
           <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-2">
             <p className="text-sm text-center sm:text-left text-black/60 mb-4 sm:mb-0 sm:mr-1">
-              Belluxe Atelier © Made by{" "}
+              Startrz Watches © Made by{" "}
               <Link
                 href="https://github.com/mohammadoftadeh"
                 className="text-black font-medium"
               >
-                Mohammad Oftadeh
+                Startrz AI
               </Link>
               {", "}
               Designed by{" "}
               <Link
-                href="https://www.figma.com/@hamzauix"
+                href="https://www.figma.com/@startrzai"
                 className="text-black font-medium"
               >
-                Hamza Naeem
+                Startrz AI
               </Link>
             </p>
             <div className="flex items-center">

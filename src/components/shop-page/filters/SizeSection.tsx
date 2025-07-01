@@ -10,26 +10,25 @@ import {
 import { cn } from "@/lib/utils";
 
 const SizeSection = () => {
-  const [selected, setSelected] = useState<string>("Large");
+  const [selected, setSelected] = useState<string>("42mm");
 
   return (
     <Accordion type="single" collapsible defaultValue="filter-size">
       <AccordionItem value="filter-size" className="border-none">
         <AccordionTrigger className="text-black font-bold text-xl hover:no-underline p-0 py-0.5">
-          Size
+          Case Size
         </AccordionTrigger>
         <AccordionContent className="pt-4 pb-0">
           <div className="flex items-center flex-wrap">
             {[
-              "XX-Small",
-              "X-Small",
-              "Small",
-              "Medium",
-              "Large",
-              "X-Large",
-              "XX-Large",
-              "3X-Large",
-              "4X-Large",
+              "36mm",
+              "38mm",
+              "40mm",
+              "42mm",
+              "44mm",
+              "46mm",
+              "48mm",
+              "50mm",
             ].map((size, index) => (
               <button
                 key={index}
