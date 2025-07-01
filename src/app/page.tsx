@@ -10,8 +10,12 @@ export const newArrivalsData: Product[] = [
   {
     id: 1,
     title: "Classic Chronograph",
-    srcUrl: "/images/pic1.png",
-    gallery: ["/images/pic1.png", "/images/pic10.png", "/images/pic11.png"],
+    srcUrl: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: [
+      "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+    ],
     price: 1200,
     discount: {
       amount: 0,
@@ -22,8 +26,8 @@ export const newArrivalsData: Product[] = [
   {
     id: 2,
     title: "Sport Diver Watch",
-    srcUrl: "/images/pic2.png",
-    gallery: ["/images/pic2.png"],
+    srcUrl: "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: ["https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
     price: 2600,
     discount: {
       amount: 0,
@@ -34,8 +38,8 @@ export const newArrivalsData: Product[] = [
   {
     id: 3,
     title: "Elegant Dress Watch",
-    srcUrl: "/images/pic3.png",
-    gallery: ["/images/pic3.png"],
+    srcUrl: "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: ["https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
     price: 1800,
     discount: {
       amount: 0,
@@ -46,8 +50,12 @@ export const newArrivalsData: Product[] = [
   {
     id: 4,
     title: "Smart Digital Watch",
-    srcUrl: "/images/pic4.png",
-    gallery: ["/images/pic4.png", "/images/pic10.png", "/images/pic11.png"],
+    srcUrl: "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: [
+      "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+    ],
     price: 1600,
     discount: {
       amount: 0,
@@ -61,8 +69,12 @@ export const topSellingData: Product[] = [
   {
     id: 5,
     title: "Vintage Automatic",
-    srcUrl: "/images/pic5.png",
-    gallery: ["/images/pic5.png", "/images/pic10.png", "/images/pic11.png"],
+    srcUrl: "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: [
+      "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+    ],
     price: 2320,
     discount: {
       amount: 0,
@@ -73,8 +85,12 @@ export const topSellingData: Product[] = [
   {
     id: 6,
     title: "Luxury GMT Master",
-    srcUrl: "/images/pic6.png",
-    gallery: ["/images/pic6.png", "/images/pic10.png", "/images/pic11.png"],
+    srcUrl: "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: [
+      "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+    ],
     price: 14500,
     discount: {
       amount: 0,
@@ -85,8 +101,8 @@ export const topSellingData: Product[] = [
   {
     id: 7,
     title: "Minimalist Quartz",
-    srcUrl: "/images/pic7.png",
-    gallery: ["/images/pic7.png"],
+    srcUrl: "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: ["https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
     price: 800,
     discount: {
       amount: 0,
@@ -97,8 +113,8 @@ export const topSellingData: Product[] = [
   {
     id: 8,
     title: "Titanium Sports Watch",
-    srcUrl: "/images/pic8.png",
-    gallery: ["/images/pic8.png"],
+    srcUrl: "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: ["https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
     price: 2100,
     discount: {
       amount: 0,
@@ -112,8 +128,12 @@ export const relatedProductData: Product[] = [
   {
     id: 12,
     title: "Rose Gold Elegance",
-    srcUrl: "/images/pic12.png",
-    gallery: ["/images/pic12.png", "/images/pic10.png", "/images/pic11.png"],
+    srcUrl: "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: [
+      "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+    ],
     price: 2420,
     discount: {
       amount: 0,
@@ -124,8 +144,12 @@ export const relatedProductData: Product[] = [
   {
     id: 13,
     title: "Carbon Fiber Racing",
-    srcUrl: "/images/pic13.png",
-    gallery: ["/images/pic13.png", "/images/pic10.png", "/images/pic11.png"],
+    srcUrl: "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: [
+      "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+    ],
     price: 1450,
     discount: {
       amount: 0,
@@ -136,8 +160,8 @@ export const relatedProductData: Product[] = [
   {
     id: 14,
     title: "Ceramic Luxury Watch",
-    srcUrl: "/images/pic14.png",
-    gallery: ["/images/pic14.png"],
+    srcUrl: "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: ["https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
     price: 1800,
     discount: {
       amount: 0,
@@ -148,8 +172,8 @@ export const relatedProductData: Product[] = [
   {
     id: 15,
     title: "Black Steel Professional",
-    srcUrl: "/images/pic15.png",
-    gallery: ["/images/pic15.png"],
+    srcUrl: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: ["https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
     price: 1500,
     discount: {
       amount: 0,
