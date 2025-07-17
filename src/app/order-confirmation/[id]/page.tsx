@@ -217,7 +217,7 @@ export default function OrderConfirmationPage() {
                         )}
                         <div className="flex justify-between items-center mt-1">
                           <span className="text-xs text-gray-500">Qty: {item.quantity}</span>
-                          <span className="text-sm font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                          <span className="text-sm font-medium">₦{(item.price * item.quantity).toLocaleString()}</span>
                         </div>
                       </div>
                     </div>
@@ -230,20 +230,20 @@ export default function OrderConfirmationPage() {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>${order.subtotal.toFixed(2)}</span>
+                    <span>₦{order.subtotal.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Tax</span>
-                    <span>${order.tax.toFixed(2)}</span>
+                    <span>₦{order.tax.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Shipping</span>
-                    <span>{order.shipping === 0 ? "Free" : `$${order.shipping.toFixed(2)}`}</span>
+                    <span>{order.shipping === 0 ? "Free" : `₦${order.shipping.toLocaleString()}`}</span>
                   </div>
                   <Separator />
                   <div className="flex justify-between font-semibold text-lg">
                     <span>Total</span>
-                    <span>${order.total.toFixed(2)}</span>
+                    <span>₦{order.total.toLocaleString()}</span>
                   </div>
                 </div>
 

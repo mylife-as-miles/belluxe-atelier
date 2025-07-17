@@ -387,7 +387,7 @@ export default function CheckoutPage() {
                           )}
                           <div className="flex justify-between items-center mt-1">
                             <span className="text-xs text-muted-foreground">Qty: {item.quantity}</span>
-                            <span className="text-sm font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                            <span className="text-sm font-medium">₦{(item.price * item.quantity).toLocaleString()}</span>
                           </div>
                         </div>
                       </div>
@@ -400,20 +400,20 @@ export default function CheckoutPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span>Subtotal</span>
-                      <span>${totalPrice.toFixed(2)}</span>
+                      <span>₦{totalPrice.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Tax</span>
-                      <span>${tax.toFixed(2)}</span>
+                      <span>₦{tax.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Shipping</span>
-                      <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                      <span>{shipping === 0 ? "Free" : `₦${shipping.toLocaleString()}`}</span>
                     </div>
                     <Separator />
                     <div className="flex justify-between font-semibold text-lg">
                       <span>Total</span>
-                      <span>${finalTotal.toFixed(2)}</span>
+                      <span>₦{finalTotal.toLocaleString()}</span>
                     </div>
                   </div>
 
@@ -423,7 +423,7 @@ export default function CheckoutPage() {
                     size="lg"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Processing..." : `Complete Order - $${finalTotal.toFixed(2)}`}
+                    {isSubmitting ? "Processing..." : `Complete Order - ₦${finalTotal.toLocaleString()}`}
                   </Button>
                 </CardContent>
               </Card>

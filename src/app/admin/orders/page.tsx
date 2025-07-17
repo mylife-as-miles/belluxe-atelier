@@ -134,7 +134,7 @@ export default function AdminOrdersPage() {
     );
   };
 
-  const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
+  const formatCurrency = (amount: number) => `₦${amount.toLocaleString()}`;
 
   const filteredOrders = orders;
 

@@ -58,7 +58,7 @@ export default function CartPage() {
                               </p>
                             )}
                             <p className="text-xl font-bold text-black">
-                              ${item.price.toFixed(2)}
+                              ₦{item.price.toLocaleString()}
                             </p>
                           </div>
                           
@@ -99,7 +99,7 @@ export default function CartPage() {
                           
                           <div className="ml-auto">
                             <p className="text-lg font-bold">
-                              ${(item.price * item.quantity).toFixed(2)}
+                              ₦{(item.price * item.quantity).toLocaleString()}
                             </p>
                           </div>
                         </div>
@@ -118,7 +118,7 @@ export default function CartPage() {
                 <div className="flex flex-col space-y-5">
                   <div className="flex items-center justify-between">
                     <span className="md:text-xl text-black/60">Subtotal</span>
-                    <span className="md:text-xl font-bold">${totalPrice.toFixed(2)}</span>
+                    <span className="md:text-xl font-bold">₦{totalPrice.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="md:text-xl text-black/60">
@@ -130,7 +130,7 @@ export default function CartPage() {
                   <div className="flex items-center justify-between">
                     <span className="md:text-xl text-black">Total</span>
                     <span className="text-xl md:text-2xl font-bold">
-                      ${totalPrice.toFixed(2)}
+                      ₦{totalPrice.toLocaleString()}
                     </span>
                   </div>
                 </div>
