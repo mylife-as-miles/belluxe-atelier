@@ -50,16 +50,82 @@ model Product {
   specifications String?      // JSON string of specifications array
   faqs           String?      // JSON string of FAQs array
   reviews        Review[]
+  orderItems     OrderItem[]
+  cartItems      CartItem[]
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
 }
 
 model Review {
-  id      Int     @id @default(autoincrement())
-  user    String
-  content String
-  rating  Int
-  date    String
-  product Product @relation(fields: [productId], references: [id])
+  id        Int     @id @default(autoincrement())
+  user      String
+  content   String
+  rating    Int
+  date      String
+  product   Product @relation(fields: [productId], references: [id])
   productId Int
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  customerEmail   String
+  customerName    String
+  customerPhone   String?
+  shippingAddress String        // JSON string of address object
+  billingAddress  String?       // JSON string of address object
+  subtotal        Float
+  tax             Float
+  shipping        Float
+  total           Float
+  status          OrderStatus   @default(PENDING)
+  paymentStatus   PaymentStatus @default(PENDING)
+  paymentMethod   String?
+  trackingNumber  String?
+  notes           String?
+  orderItems      OrderItem[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   String
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int
+  price     Float   // Price at time of order
+  color     String? // Selected color
+  createdAt DateTime @default(now())
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  sessionId String   // For guest users
+  userId    String?  // For logged-in users
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+  quantity  Int
+  color     String?  // Selected color
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([sessionId, productId, color])
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
 }
