@@ -50,7 +50,7 @@ export default async function ProductsPage() {
                     <div className="ml-4">
                       <h3 className="text-lg font-medium text-gray-900">{product.title}</h3>
                       <p className="text-sm text-gray-500">{product.category} • {product.subcategory}</p>
-                      <p className="text-sm font-medium text-gray-900">${product.price}</p>
+                      <p className="text-sm font-medium text-gray-900">₦{product.price.toLocaleString()}</p>
                     </div>
                   </div>
                   <div className="flex space-x-2">

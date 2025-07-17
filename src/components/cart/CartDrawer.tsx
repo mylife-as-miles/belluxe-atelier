@@ -87,7 +87,7 @@ export function CartDrawer() {
                     {item.color && (
                       <p className="text-xs text-muted-foreground">Color: {item.color}</p>
                     )}
-                    <p className="text-sm font-semibold">${item.price.toFixed(2)}</p>
+                    <p className="text-sm font-semibold">₦{item.price.toLocaleString()}</p>
                     
                     <div className="flex items-center gap-2 mt-2">
                       <Button
@@ -131,7 +131,7 @@ export function CartDrawer() {
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span>Subtotal</span>
-                <span>${totalPrice.toFixed(2)}</span>
+                <span>₦{totalPrice.toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Shipping</span>
@@ -140,7 +140,7 @@ export function CartDrawer() {
               <Separator />
               <div className="flex justify-between font-semibold">
                 <span>Total</span>
-                <span>${totalPrice.toFixed(2)}</span>
+                <span>₦{totalPrice.toLocaleString()}</span>
               </div>
             </div>
             

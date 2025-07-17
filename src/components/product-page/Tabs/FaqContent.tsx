@@ -35,7 +35,7 @@ const faqsData: FaqItem[] = [
   {
     question: "What are the shipping options and costs?",
     answer:
-      "We offer free worldwide shipping on all orders over $500. Express shipping options are available for faster delivery.",
+      "We offer free worldwide shipping on all orders over ₦200,000. Express shipping options are available for faster delivery.",
   },
   {
     question: "What is the return policy for watches?",

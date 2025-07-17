@@ -231,7 +231,7 @@ export default function NewProductPage() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Price ($)
+              Price (₦)
             </label>
             <input
               type="number"
@@ -332,7 +332,7 @@ export default function NewProductPage() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Discount Amount ($)
+              Discount Amount (₦)
             </label>
             <input
               type="number"

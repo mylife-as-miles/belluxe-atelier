@@ -65,7 +65,7 @@ export default function CheckoutPage() {
 
   const totalPrice = getTotalPrice();
   const tax = totalPrice * 0.08; // 8% tax
-  const shipping = totalPrice > 50 ? 0 : 10; // Free shipping over $50
+  const shipping = totalPrice > 20000 ? 0 : 5000; // Free shipping over ₦20,000
   const finalTotal = totalPrice + tax + shipping;
 
   if (items.length === 0) {
