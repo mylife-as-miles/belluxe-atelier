@@ -1,11 +1,4 @@
-import ProductListSec from "@/components/common/ProductListSec";
-import Brands from "@/components/homepage/Brands";
-import DressStyle from "@/components/homepage/DressStyle";
-import Header from "@/components/homepage/Header";
-import Reviews from "@/components/homepage/Reviews";
-import { Product } from "@/types/product.types";
-import { Review } from "@/types/review.types";
-
+import React from "react";
 import ProductListSec from "@/components/common/ProductListSec";
 import Brands from "@/components/homepage/Brands";
 import DressStyle from "@/components/homepage/DressStyle";
