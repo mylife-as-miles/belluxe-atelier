@@ -8,26 +8,46 @@ import {
 import Link from "next/link";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-type WatchStyle = {
+type JewelryCategory = {
   title: string;
   slug: string;
 };
 
-const watchStylesData: WatchStyle[] = [
+const jewelryCategoriesData: JewelryCategory[] = [
   {
-    title: "Sport",
+    title: "Earrings",
     slug: "/shop",
   },
   {
-    title: "Luxury",
+    title: "Necklaces",
     slug: "/shop",
   },
   {
-    title: "Smart",
+    title: "Rings",
     slug: "/shop",
   },
   {
-    title: "Classic",
+    title: "Bracelets",
+    slug: "/shop",
+  },
+  {
+    title: "Watches",
+    slug: "/shop",
+  },
+  {
+    title: "Anklets",
+    slug: "/shop",
+  },
+  {
+    title: "Brooches & Pins",
+    slug: "/shop",
+  },
+  {
+    title: "Body Jewelry",
+    slug: "/shop",
+  },
+  {
+    title: "Jewelry Sets",
     slug: "/shop",
   },
 ];
@@ -37,17 +57,17 @@ const DressStyleSection = () => {
     <Accordion type="single" collapsible defaultValue="filter-style">
       <AccordionItem value="filter-style" className="border-none">
         <AccordionTrigger className="text-black font-bold text-xl hover:no-underline p-0 py-0.5">
-          Watch Style
+          Jewelry Category
         </AccordionTrigger>
         <AccordionContent className="pt-4 pb-0">
           <div className="flex flex-col text-black/60 space-y-0.5">
-            {watchStylesData.map((wStyle, idx) => (
+            {jewelryCategoriesData.map((category, idx) => (
               <Link
                 key={idx}
-                href={wStyle.slug}
+                href={category.slug}
                 className="flex items-center justify-between py-2"
               >
-                {wStyle.title} <MdKeyboardArrowRight />
+                {category.title} <MdKeyboardArrowRight />
               </Link>
             ))}
           </div>
