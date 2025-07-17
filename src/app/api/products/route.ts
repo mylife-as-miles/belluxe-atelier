@@ -12,6 +12,9 @@ export async function GET() {
       ...product,
       gallery: JSON.parse(product.gallery),
       discount: JSON.parse(product.discount),
+      colors: JSON.parse(product.colors || "[]"),
+      specifications: JSON.parse(product.specifications || "[]"),
+      faqs: JSON.parse(product.faqs || "[]"),
     }));
     
     return NextResponse.json(formattedProducts);
@@ -23,7 +26,20 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { title, srcUrl, gallery, price, discount, rating, category, subcategory } = body;
+    const { 
+      title, 
+      srcUrl, 
+      gallery, 
+      price, 
+      discount, 
+      rating, 
+      category, 
+      subcategory,
+      description,
+      colors,
+      specifications,
+      faqs
+    } = body;
     
     const newProduct = await prisma.product.create({
       data: {
@@ -35,6 +51,10 @@ export async function POST(request: Request) {
         rating,
         category,
         subcategory,
+        description: description || "",
+        colors: JSON.stringify(colors || []),
+        specifications: JSON.stringify(specifications || []),
+        faqs: JSON.stringify(faqs || []),
       },
     });
     
@@ -43,6 +63,9 @@ export async function POST(request: Request) {
       ...newProduct,
       gallery: JSON.parse(newProduct.gallery),
       discount: JSON.parse(newProduct.discount),
+      colors: JSON.parse(newProduct.colors || "[]"),
+      specifications: JSON.parse(newProduct.specifications || "[]"),
+      faqs: JSON.parse(newProduct.faqs || "[]"),
     };
     
     return NextResponse.json(formattedProduct, { status: 201 });

@@ -11,16 +11,20 @@ datasource db {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  title       String
-  srcUrl      String
-  gallery     String   // JSON string of array
-  price       Float
-  discount    String   // JSON string of discount object
-  rating      Float
-  category    String
-  subcategory String
-  reviews     Review[]
+  id             Int      @id @default(autoincrement())
+  title          String
+  srcUrl         String
+  gallery        String   // JSON string of array
+  price          Float
+  discount       String   // JSON string of discount object
+  rating         Float
+  category       String
+  subcategory    String
+  description    String?  // Product description
+  colors         String?  // JSON string of colors array
+  specifications String?  // JSON string of specifications array
+  faqs           String?  // JSON string of FAQs array
+  reviews        Review[]
 }
 
 model Review {

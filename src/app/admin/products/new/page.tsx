@@ -369,6 +369,138 @@ export default function NewProductPage() {
           </button>
         </div>
 
+        {/* Description */}
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Product Description
+          </label>
+          <textarea
+            rows={4}
+            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            value={formData.description}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            placeholder="Enter detailed product description..."
+          />
+        </div>
+
+        {/* Colors */}
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Available Colors
+          </label>
+          {formData.colors.map((color, index) => (
+            <div key={index} className="flex items-center space-x-2 mb-2">
+              <input
+                type="text"
+                className="flex-1 border border-gray-300 rounded-md px-3 py-2"
+                value={color}
+                onChange={(e) => handleColorChange(index, e.target.value)}
+                placeholder="Color name (e.g., Black, Silver, Gold)"
+              />
+              {formData.colors.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => removeColorField(index)}
+                  className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600"
+                >
+                  Remove
+                </button>
+              )}
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addColorField}
+            className="bg-green-500 text-white px-3 py-2 rounded-md hover:bg-green-600 mt-2"
+          >
+            Add Color
+          </button>
+        </div>
+
+        {/* Product Specifications */}
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Product Specifications
+          </label>
+          {formData.specifications.map((spec, index) => (
+            <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3 p-3 border border-gray-200 rounded-md">
+              <input
+                type="text"
+                className="border border-gray-300 rounded-md px-3 py-2"
+                value={spec.key}
+                onChange={(e) => handleSpecificationChange(index, 'key', e.target.value)}
+                placeholder="Specification name (e.g., Movement, Case Material)"
+              />
+              <div className="flex items-center space-x-2">
+                <input
+                  type="text"
+                  className="flex-1 border border-gray-300 rounded-md px-3 py-2"
+                  value={spec.value}
+                  onChange={(e) => handleSpecificationChange(index, 'value', e.target.value)}
+                  placeholder="Specification value (e.g., Swiss Automatic, Stainless Steel)"
+                />
+                {formData.specifications.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeSpecificationField(index)}
+                    className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addSpecificationField}
+            className="bg-green-500 text-white px-3 py-2 rounded-md hover:bg-green-600 mt-2"
+          >
+            Add Specification
+          </button>
+        </div>
+
+        {/* FAQs */}
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Frequently Asked Questions (FAQs)
+          </label>
+          {formData.faqs.map((faq, index) => (
+            <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md">
+              <input
+                type="text"
+                className="w-full border border-gray-300 rounded-md px-3 py-2 mb-2"
+                value={faq.question}
+                onChange={(e) => handleFaqChange(index, 'question', e.target.value)}
+                placeholder="FAQ Question (e.g., Is this watch waterproof?)"
+              />
+              <textarea
+                rows={3}
+                className="w-full border border-gray-300 rounded-md px-3 py-2"
+                value={faq.answer}
+                onChange={(e) => handleFaqChange(index, 'answer', e.target.value)}
+                placeholder="FAQ Answer (e.g., Yes, this watch has 100m water resistance...)"
+              />
+              {formData.faqs.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => removeFaqField(index)}
+                  className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600 mt-2"
+                >
+                  Remove FAQ
+                </button>
+              )}
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addFaqField}
+            className="bg-green-500 text-white px-3 py-2 rounded-md hover:bg-green-600 mt-2"
+          >
+            Add FAQ
+          </button>
+        </div>
+
         <div className="mt-6 flex justify-end space-x-3">
           <button
             type="button"
