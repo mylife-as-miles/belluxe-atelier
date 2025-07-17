@@ -5,13 +5,21 @@ import Header from "@/components/homepage/Header";
 import Reviews from "@/components/homepage/Reviews";
 import { Product } from "@/types/product.types";
 import { Review } from "@/types/review.types";
+import { fallbackProductsData } from "@/lib/fallback-data";
 
 async function getProducts() {
-  const res = await fetch('/api/products', { cache: 'no-store' });
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
+  try {
+    const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3001';
+    const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
+    if (!res.ok) {
+      console.warn('API failed, using fallback data');
+      return fallbackProductsData;
+    }
+    return res.json();
+  } catch (error) {
+    console.warn('API error, using fallback data:', error);
+    return fallbackProductsData;
   }
-  return res.json();
 }
 
 export default async function Home() {
