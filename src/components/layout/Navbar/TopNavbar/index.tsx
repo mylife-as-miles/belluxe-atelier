@@ -127,7 +127,7 @@ const TopNavbar = () => {
           <InputGroup.Input
             type="search"
             name="search"
-            placeholder="Search for watches..."
+            placeholder="Search for jewelry, watches, rings..."
             className="bg-transparent placeholder:text-black/40"
           />
         </InputGroup>
