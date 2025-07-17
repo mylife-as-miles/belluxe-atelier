@@ -29,6 +29,12 @@ export default function AdminLayout({
                 Categories
               </Link>
               <Link 
+                href="/admin/orders" 
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Orders
+              </Link>
+              <Link 
                 href="/" 
                 className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
               >
