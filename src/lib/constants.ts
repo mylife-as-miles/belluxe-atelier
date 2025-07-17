@@ -9,3 +9,7 @@ export const CURRENCY = {
   CODE: 'NGN',
   NAME: 'Nigerian Naira',
 } as const;
+
+// Export individual constants for convenience
+export const FREE_SHIPPING_THRESHOLD = SHIPPING_CONFIG.FREE_SHIPPING_THRESHOLD;
+export const STANDARD_SHIPPING_COST = SHIPPING_CONFIG.STANDARD_SHIPPING_COST;
