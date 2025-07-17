@@ -6,6 +6,14 @@ import Reviews from "@/components/homepage/Reviews";
 import { Product } from "@/types/product.types";
 import { Review } from "@/types/review.types";
 
+import ProductListSec from "@/components/common/ProductListSec";
+import Brands from "@/components/homepage/Brands";
+import DressStyle from "@/components/homepage/DressStyle";
+import Header from "@/components/homepage/Header";
+import Reviews from "@/components/homepage/Reviews";
+import { Product } from "@/types/product.types";
+import { Review } from "@/types/review.types";
+
 export const newArrivalsData: Product[] = [
   {
     id: 1,
@@ -22,164 +30,183 @@ export const newArrivalsData: Product[] = [
       percentage: 0,
     },
     rating: 4.5,
+    category: 'watches',
+    subcategory: 'classic',
   },
   {
     id: 2,
-    title: "Sport Diver Watch",
-    srcUrl: "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-    gallery: ["https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
-    price: 2600,
+    title: "Rose Gold Drop Earrings",
+    srcUrl: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHxlYXJyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NDd8MA&ixlib=rb-4.1.0&q=85",
+    gallery: ["https://images.unsplash.com/photo-1629224316810-9d8805b95e76?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHxlYXJyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NDd8MA&ixlib=rb-4.1.0&q=85"],
+    price: 450,
     discount: {
       amount: 0,
       percentage: 20,
     },
-    rating: 3.5,
+    rating: 4.8,
+    category: 'earrings',
+    subcategory: 'dangles',
   },
   {
     id: 3,
-    title: "Elegant Dress Watch",
-    srcUrl: "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-    gallery: ["https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
-    price: 1800,
+    title: "Elegant Layered Necklace",
+    srcUrl: "https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxuZWNrbGFjZXxlbnwwfHx8fDE3NTI3MjA0NjN8MA&ixlib=rb-4.1.0&q=85",
+    gallery: ["https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxuZWNrbGFjZXxlbnwwfHx8fDE3NTI3MjA0NjN8MA&ixlib=rb-4.1.0&q=85"],
+    price: 320,
     discount: {
       amount: 0,
       percentage: 0,
     },
-    rating: 4.5,
+    rating: 4.6,
+    category: 'necklaces',
+    subcategory: 'layered',
   },
   {
     id: 4,
-    title: "Smart Digital Watch",
-    srcUrl: "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    title: "Gold Statement Rings Set",
+    srcUrl: "https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NTR8MA&ixlib=rb-4.1.0&q=85",
     gallery: [
-      "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+      "https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NTR8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NTR8MA&ixlib=rb-4.1.0&q=85"
     ],
-    price: 1600,
+    price: 680,
     discount: {
       amount: 0,
-      percentage: 30,
+      percentage: 15,
     },
-    rating: 4.5,
+    rating: 4.7,
+    category: 'rings',
+    subcategory: 'statement-rings',
   },
 ];
 
 export const topSellingData: Product[] = [
   {
     id: 5,
-    title: "Vintage Automatic",
-    srcUrl: "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    title: "Silver Leaf Earrings",
+    srcUrl: "https://images.unsplash.com/photo-1693212793204-bcea856c75fe?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwyfHxlYXJyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NDd8MA&ixlib=rb-4.1.0&q=85",
     gallery: [
-      "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+      "https://images.unsplash.com/photo-1693212793204-bcea856c75fe?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwyfHxlYXJyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NDd8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.pexels.com/photos/1413420/pexels-photo-1413420.jpeg"
     ],
-    price: 2320,
+    price: 280,
     discount: {
       amount: 0,
-      percentage: 20,
+      percentage: 25,
     },
-    rating: 5.0,
+    rating: 4.9,
+    category: 'earrings',
+    subcategory: 'studs',
   },
   {
     id: 6,
-    title: "Luxury GMT Master",
-    srcUrl: "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    title: "Luxury Pearl Necklace",
+    srcUrl: "https://images.unsplash.com/photo-1685970731571-72ede0cb26ea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxuZWNrbGFjZXxlbnwwfHx8fDE3NTI3MjA0NjN8MA&ixlib=rb-4.1.0&q=85",
     gallery: [
-      "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+      "https://images.unsplash.com/photo-1685970731571-72ede0cb26ea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxuZWNrbGFjZXxlbnwwfHx8fDE3NTI3MjA0NjN8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.pexels.com/photos/1035683/pexels-photo-1035683.jpeg"
     ],
-    price: 14500,
+    price: 1850,
     discount: {
       amount: 0,
       percentage: 0,
     },
-    rating: 4.0,
+    rating: 4.8,
+    category: 'necklaces',
+    subcategory: 'pendants',
   },
   {
     id: 7,
-    title: "Minimalist Quartz",
-    srcUrl: "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-    gallery: ["https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
-    price: 800,
-    discount: {
-      amount: 0,
-      percentage: 0,
-    },
-    rating: 3.0,
-  },
-  {
-    id: 8,
-    title: "Titanium Sports Watch",
-    srcUrl: "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-    gallery: ["https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
-    price: 2100,
+    title: "Vintage Automatic Watch",
+    srcUrl: "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    gallery: ["https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
+    price: 2400,
     discount: {
       amount: 0,
       percentage: 0,
     },
     rating: 4.5,
+    category: 'watches',
+    subcategory: 'vintage',
+  },
+  {
+    id: 8,
+    title: "Delicate Chain Bracelet",
+    srcUrl: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHxqZXdlbHJ5fGVufDB8fHx8MTc1MjcwODQ2Mnww&ixlib=rb-4.1.0&q=85",
+    gallery: ["https://images.unsplash.com/photo-1611652022419-a9419f74343d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHxqZXdlbHJ5fGVufDB8fHx8MTc1MjcwODQ2Mnww&ixlib=rb-4.1.0&q=85"],
+    price: 320,
+    discount: {
+      amount: 0,
+      percentage: 0,
+    },
+    rating: 4.4,
+    category: 'bracelets',
+    subcategory: 'chain-bracelets',
   },
 ];
 
 export const relatedProductData: Product[] = [
   {
     id: 12,
-    title: "Rose Gold Elegance",
-    srcUrl: "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    title: "Heart Pendant Necklace",
+    srcUrl: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxuZWNrbGFjZXxlbnwwfHx8fDE3NTI3MjA0NjN8MA&ixlib=rb-4.1.0&q=85",
     gallery: [
-      "https://images.pexels.com/photos/1034063/pexels-photo-1034063.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+      "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxuZWNrbGFjZXxlbnwwfHx8fDE3NTI3MjA0NjN8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.pexels.com/photos/906056/pexels-photo-906056.jpeg"
     ],
-    price: 2420,
+    price: 420,
     discount: {
       amount: 0,
       percentage: 20,
     },
-    rating: 4.0,
+    rating: 4.6,
+    category: 'necklaces',
+    subcategory: 'pendants',
   },
   {
     id: 13,
-    title: "Carbon Fiber Racing",
-    srcUrl: "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
+    title: "Tassel Drop Earrings",
+    srcUrl: "https://images.pexels.com/photos/1721937/pexels-photo-1721937.jpeg",
     gallery: [
-      "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-      "https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"
+      "https://images.pexels.com/photos/1721937/pexels-photo-1721937.jpeg",
+      "https://images.pexels.com/photos/458766/pexels-photo-458766.jpeg"
     ],
-    price: 1450,
+    price: 180,
     discount: {
       amount: 0,
       percentage: 0,
     },
-    rating: 3.5,
+    rating: 4.3,
+    category: 'earrings',
+    subcategory: 'dangles',
   },
   {
     id: 14,
-    title: "Ceramic Luxury Watch",
-    srcUrl: "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-    gallery: ["https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
-    price: 1800,
+    title: "Wedding Ring Set",
+    srcUrl: "https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NTR8MA&ixlib=rb-4.1.0&q=85",
+    gallery: ["https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxyaW5nc3xlbnwwfHx8fDE3NTI3MjA0NTR8MA&ixlib=rb-4.1.0&q=85"],
+    price: 2800,
     discount: {
       amount: 0,
       percentage: 0,
     },
-    rating: 4.5,
+    rating: 4.9,
+    category: 'rings',
+    subcategory: 'engagement-rings',
   },
   {
     id: 15,
-    title: "Black Steel Professional",
-    srcUrl: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop",
-    gallery: ["https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&fit=crop"],
+    title: "Luxury Jewelry Set",
+    srcUrl: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxqZXdlbHJ5fGVufDB8fHx8MTc1MjcwODQ2Mnww&ixlib=rb-4.1.0&q=85",
+    gallery: ["https://images.unsplash.com/photo-1617038220319-276d3cfab638?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxqZXdlbHJ5fGVufDB8fHx8MTc1MjcwODQ2Mnww&ixlib=rb-4.1.0&q=85"],
     price: 1500,
     discount: {
       amount: 0,
       percentage: 30,
     },
-    rating: 5.0,
+    rating: 4.7,
+    category: 'jewelry-sets',
+    subcategory: 'jewelry-sets',
   },
 ];
 
