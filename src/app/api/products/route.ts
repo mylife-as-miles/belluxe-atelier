@@ -8,7 +8,7 @@ export async function GET() {
     const products = await prisma.product.findMany();
     
     // Parse JSON strings back to objects/arrays
-    const formattedProducts = products.map(product => ({
+    const formattedProducts = products.map((product: any) => ({
       ...product,
       gallery: JSON.parse(product.gallery),
       discount: JSON.parse(product.discount),
