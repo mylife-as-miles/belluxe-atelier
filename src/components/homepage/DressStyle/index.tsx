@@ -18,7 +18,7 @@ const DressStyle = () => {
             "text-[32px] leading-[36px] md:text-5xl mb-8 md:mb-14 capitalize",
           ])}
         >
-          BROWSE BY WATCH STYLE
+          BROWSE BY JEWELRY STYLE
         </motion.h2>
         <motion.div
           initial={{ y: "100px", opacity: 0 }}
