@@ -35,6 +35,10 @@ export default function ProductPage({
     notFound();
   }
 
+  // Filter out the current product from related products and get up to 4 random ones
+  const filteredRelatedProducts = data.filter(product => product.id !== productData.id);
+  const relatedProducts = filteredRelatedProducts.slice(0, 4);
+
   return (
     <main>
       <div className="max-w-frame mx-auto px-4 xl:px-0">
@@ -45,9 +49,11 @@ export default function ProductPage({
         </section>
         <Tabs />
       </div>
-      <div className="mb-[50px] sm:mb-20">
-        <ProductListSec title="You might also like" data={relatedProductData} />
-      </div>
+      {relatedProducts.length > 0 && (
+        <div className="mb-[50px] sm:mb-20">
+          <ProductListSec title="You might also like" data={relatedProducts} />
+        </div>
+      )}
     </main>
   );
 }

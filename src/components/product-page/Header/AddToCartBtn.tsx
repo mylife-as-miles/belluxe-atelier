@@ -1,34 +1,37 @@
 "use client";
 
-import { addToCart } from "@/lib/features/carts/cartsSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks/redux";
-import { RootState } from "@/lib/store";
+import { useCartStore } from "@/lib/cart-store";
 import { Product } from "@/types/product.types";
 import React from "react";
 
 const AddToCartBtn = ({ data }: { data: Product & { quantity: number } }) => {
-  const dispatch = useAppDispatch();
-  const { sizeSelection, colorSelection } = useAppSelector(
-    (state: RootState) => state.products
-  );
+  const { addItem, openCart } = useCartStore();
+
+  const handleAddToCart = () => {
+    // Calculate the final price considering discounts
+    const finalPrice = data.discount.percentage > 0 
+      ? data.price - (data.price * data.discount.percentage) / 100
+      : data.discount.amount > 0 
+      ? data.price - data.discount.amount
+      : data.price;
+
+    // Add item to cart with the specified quantity
+    addItem({
+      id: data.id,
+      title: data.title,
+      price: finalPrice,
+      srcUrl: data.srcUrl,
+    }, data.quantity);
+    
+    // Open the cart drawer to show the added item
+    openCart();
+  };
 
   return (
     <button
       type="button"
       className="bg-black w-full ml-3 sm:ml-5 rounded-full h-11 md:h-[52px] text-sm sm:text-base text-white hover:bg-black/80 transition-all"
-      onClick={() =>
-        dispatch(
-          addToCart({
-            id: data.id,
-            name: data.title,
-            srcUrl: data.srcUrl,
-            price: data.price,
-            attributes: [sizeSelection, colorSelection.name],
-            discount: data.discount,
-            quantity: data.quantity,
-          })
-        )
-      }
+      onClick={handleAddToCart}
     >
       Add to Cart
     </button>
