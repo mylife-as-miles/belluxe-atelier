@@ -17,6 +17,10 @@ export default function NewProductPage() {
     rating: "",
     category: "",
     subcategory: "",
+    description: "",
+    colors: [""],
+    specifications: [{ key: "", value: "" }],
+    faqs: [{ question: "", answer: "" }],
   });
 
   const uploadToCloudinary = async (file: File): Promise<string> => {
@@ -82,6 +86,10 @@ export default function NewProductPage() {
         rating: parseFloat(formData.rating),
         category: formData.category,
         subcategory: formData.subcategory,
+        description: formData.description,
+        colors: formData.colors.filter(color => color.trim() !== ""),
+        specifications: formData.specifications.filter(spec => spec.key.trim() !== "" && spec.value.trim() !== ""),
+        faqs: formData.faqs.filter(faq => faq.question.trim() !== "" && faq.answer.trim() !== ""),
       };
 
       const response = await fetch("/api/products", {
@@ -118,6 +126,60 @@ export default function NewProductPage() {
   const removeGalleryField = (index: number) => {
     const newGallery = formData.gallery.filter((_, i) => i !== index);
     setFormData({ ...formData, gallery: newGallery });
+  };
+
+  // Colors handlers
+  const handleColorChange = (index: number, value: string) => {
+    const newColors = [...formData.colors];
+    newColors[index] = value;
+    setFormData({ ...formData, colors: newColors });
+  };
+
+  const addColorField = () => {
+    setFormData({ ...formData, colors: [...formData.colors, ""] });
+  };
+
+  const removeColorField = (index: number) => {
+    const newColors = formData.colors.filter((_, i) => i !== index);
+    setFormData({ ...formData, colors: newColors });
+  };
+
+  // Specifications handlers
+  const handleSpecificationChange = (index: number, field: string, value: string) => {
+    const newSpecs = [...formData.specifications];
+    newSpecs[index] = { ...newSpecs[index], [field]: value };
+    setFormData({ ...formData, specifications: newSpecs });
+  };
+
+  const addSpecificationField = () => {
+    setFormData({ 
+      ...formData, 
+      specifications: [...formData.specifications, { key: "", value: "" }] 
+    });
+  };
+
+  const removeSpecificationField = (index: number) => {
+    const newSpecs = formData.specifications.filter((_, i) => i !== index);
+    setFormData({ ...formData, specifications: newSpecs });
+  };
+
+  // FAQ handlers
+  const handleFaqChange = (index: number, field: string, value: string) => {
+    const newFaqs = [...formData.faqs];
+    newFaqs[index] = { ...newFaqs[index], [field]: value };
+    setFormData({ ...formData, faqs: newFaqs });
+  };
+
+  const addFaqField = () => {
+    setFormData({ 
+      ...formData, 
+      faqs: [...formData.faqs, { question: "", answer: "" }] 
+    });
+  };
+
+  const removeFaqField = (index: number) => {
+    const newFaqs = formData.faqs.filter((_, i) => i !== index);
+    setFormData({ ...formData, faqs: newFaqs });
   };
 
   return (
