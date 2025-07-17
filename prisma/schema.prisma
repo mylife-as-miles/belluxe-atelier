@@ -10,21 +10,48 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model Category {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  slug          String        @unique
+  description   String?
+  subcategories Subcategory[]
+  products      Product[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Subcategory {
+  id          Int       @id @default(autoincrement())
+  name        String
+  slug        String    @unique
+  description String?
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId  Int
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
 model Product {
-  id             Int      @id @default(autoincrement())
+  id             Int          @id @default(autoincrement())
   title          String
   srcUrl         String
-  gallery        String   // JSON string of array
+  gallery        String       // JSON string of array
   price          Float
-  discount       String   // JSON string of discount object
+  discount       String       // JSON string of discount object
   rating         Float
-  category       String
-  subcategory    String
-  description    String?  // Product description
-  colors         String?  // JSON string of colors array
-  specifications String?  // JSON string of specifications array
-  faqs           String?  // JSON string of FAQs array
+  category       Category     @relation(fields: [categoryId], references: [id])
+  categoryId     Int
+  subcategory    Subcategory? @relation(fields: [subcategoryId], references: [id])
+  subcategoryId  Int?
+  description    String?      // Product description
+  colors         String?      // JSON string of colors array
+  specifications String?      // JSON string of specifications array
+  faqs           String?      // JSON string of FAQs array
   reviews        Review[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
 
 model Review {
