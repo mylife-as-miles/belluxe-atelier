@@ -5,7 +5,13 @@ const prisma = new PrismaClient();
 
 export async function GET() {
   try {
-    const products = await prisma.product.findMany();
+    const products = await prisma.product.findMany({
+      include: {
+        category: true,
+        subcategory: true,
+        reviews: true
+      }
+    });
     
     // Parse JSON strings back to objects/arrays
     const formattedProducts = products.map((product: any) => ({
@@ -33,8 +39,8 @@ export async function POST(request: Request) {
       price, 
       discount, 
       rating, 
-      category, 
-      subcategory,
+      categoryId,
+      subcategoryId,
       description,
       colors,
       specifications,
@@ -49,13 +55,17 @@ export async function POST(request: Request) {
         price,
         discount: JSON.stringify(discount),
         rating,
-        category,
-        subcategory,
+        categoryId,
+        subcategoryId: subcategoryId || null,
         description: description || "",
         colors: JSON.stringify(colors || []),
         specifications: JSON.stringify(specifications || []),
         faqs: JSON.stringify(faqs || []),
       },
+      include: {
+        category: true,
+        subcategory: true
+      }
     });
     
     // Parse JSON strings back for response

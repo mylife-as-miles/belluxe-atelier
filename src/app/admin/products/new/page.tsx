@@ -7,6 +7,8 @@ export default function NewProductPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [subcategories, setSubcategories] = useState<any[]>([]);
   const [formData, setFormData] = useState({
     title: "",
     srcUrl: "",
@@ -15,13 +17,39 @@ export default function NewProductPage() {
     discountAmount: "",
     discountPercentage: "",
     rating: "",
-    category: "",
-    subcategory: "",
+    categoryId: "",
+    subcategoryId: "",
     description: "",
     colors: [""],
     specifications: [{ key: "", value: "" }],
     faqs: [{ question: "", answer: "" }],
   });
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    if (formData.categoryId) {
+      const selectedCategory = categories.find(cat => cat.id === parseInt(formData.categoryId));
+      setSubcategories(selectedCategory?.subcategories || []);
+      setFormData(prev => ({ ...prev, subcategoryId: "" })); // Reset subcategory when category changes
+    } else {
+      setSubcategories([]);
+    }
+  }, [formData.categoryId, categories]);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/categories');
+      if (response.ok) {
+        const data = await response.json();
+        setCategories(data);
+      }
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  };
 
   const uploadToCloudinary = async (file: File): Promise<string> => {
     const formData = new FormData();
@@ -84,8 +112,8 @@ export default function NewProductPage() {
           percentage: parseFloat(formData.discountPercentage) || 0,
         },
         rating: parseFloat(formData.rating),
-        category: formData.category,
-        subcategory: formData.subcategory,
+        categoryId: parseInt(formData.categoryId),
+        subcategoryId: formData.subcategoryId ? parseInt(formData.subcategoryId) : null,
         description: formData.description,
         colors: formData.colors.filter(color => color.trim() !== ""),
         specifications: formData.specifications.filter(spec => spec.key.trim() !== "" && spec.value.trim() !== ""),
@@ -265,16 +293,15 @@ export default function NewProductPage() {
             <select
               required
               className="w-full border border-gray-300 rounded-md px-3 py-2"
-              value={formData.category}
-              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+              value={formData.categoryId}
+              onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
             >
               <option value="">Select Category</option>
-              <option value="watches">Watches</option>
-              <option value="earrings">Earrings</option>
-              <option value="necklaces">Necklaces</option>
-              <option value="rings">Rings</option>
-              <option value="bracelets">Bracelets</option>
-              <option value="jewelry-sets">Jewelry Sets</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -282,13 +309,25 @@ export default function NewProductPage() {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Subcategory
             </label>
-            <input
-              type="text"
-              required
+            <select
               className="w-full border border-gray-300 rounded-md px-3 py-2"
-              value={formData.subcategory}
-              onChange={(e) => setFormData({ ...formData, subcategory: e.target.value })}
-            />
+              value={formData.subcategoryId}
+              onChange={(e) => setFormData({ ...formData, subcategoryId: e.target.value })}
+              disabled={!formData.categoryId || subcategories.length === 0}
+            >
+              <option value="">Select Subcategory (Optional)</option>
+              {subcategories.map((subcategory) => (
+                <option key={subcategory.id} value={subcategory.id}>
+                  {subcategory.name}
+                </option>
+              ))}
+            </select>
+            {!formData.categoryId && (
+              <p className="text-sm text-gray-500 mt-1">Select a category first</p>
+            )}
+            {formData.categoryId && subcategories.length === 0 && (
+              <p className="text-sm text-gray-500 mt-1">No subcategories available for this category</p>
+            )}
           </div>
 
           <div>

@@ -25,21 +25,21 @@ export default function AdminDashboard() {
           </div>
         </Link>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <Link href="/admin/categories" className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-shadow">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
                 <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14-7H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z" />
                 </svg>
               </div>
             </div>
             <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">Orders</h3>
-              <p className="text-sm text-gray-500">View and manage orders (Coming Soon)</p>
+              <h3 className="text-lg font-medium text-gray-900">Categories</h3>
+              <p className="text-sm text-gray-500">Manage product categories and subcategories</p>
             </div>
           </div>
-        </div>
+        </Link>
 
         <div className="bg-white p-6 rounded-lg shadow">
           <div className="flex items-center">
