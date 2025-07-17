@@ -72,7 +72,7 @@ const Header = () => {
                 <AnimatedCounter from={0} to={2000} />+
               </span>
               <span className="text-xs xl:text-base text-black/60 text-nowrap">
-                Luxury Timepieces
+                Luxury Jewelry
               </span>
             </div>
             <Separator
