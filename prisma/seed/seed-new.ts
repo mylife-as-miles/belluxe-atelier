@@ -111,7 +111,7 @@ async function main() {
       discount: JSON.stringify({ amount: 0, percentage: 0 }),
       rating: 4.5,
       categoryId: watchesCategory.id,
-      subcategoryId: watchesCategory.subcategories.find(s => s.slug === 'classic')?.id || 1,
+      subcategoryId: watchesCategory.subcategories.find((s: any) => s.slug === 'classic')?.id || 1,
       description: "A timeless chronograph watch with premium materials and precise Swiss movement.",
       colors: JSON.stringify(["Black", "Silver", "Gold"]),
       specifications: JSON.stringify([
@@ -133,7 +133,7 @@ async function main() {
       discount: JSON.stringify({ amount: 50, percentage: 10 }),
       rating: 4.8,
       categoryId: earringsCategory.id,
-      subcategoryId: earringsCategory.subcategories.find(s => s.slug === 'dangles')?.id || 1,
+      subcategoryId: earringsCategory.subcategories.find((s: any) => s.slug === 'dangles')?.id || 1,
       description: "Elegant rose gold drop earrings with sparkling crystals.",
       colors: JSON.stringify(["Rose Gold", "Gold", "Silver"]),
       specifications: JSON.stringify([
@@ -153,7 +153,7 @@ async function main() {
       discount: JSON.stringify({ amount: 250, percentage: 10 }),
       rating: 4.9,
       categoryId: braceletsCategory.id,
-      subcategoryId: braceletsCategory.subcategories.find(s => s.slug === 'chain-bracelets')?.id || 1,
+      subcategoryId: braceletsCategory.subcategories.find((s: any) => s.slug === 'chain-bracelets')?.id || 1,
       description: "Stunning diamond tennis bracelet with brilliant cut diamonds.",
       colors: JSON.stringify(["White Gold", "Yellow Gold", "Rose Gold"]),
       specifications: JSON.stringify([
@@ -175,7 +175,7 @@ async function main() {
       discount: JSON.stringify({ amount: 0, percentage: 0 }),
       rating: 4.7,
       categoryId: necklacesCategory.id,
-      subcategoryId: necklacesCategory.subcategories.find(s => s.slug === 'pendants')?.id || 1,
+      subcategoryId: necklacesCategory.subcategories.find((s: any) => s.slug === 'pendants')?.id || 1,
       description: "Classic pearl pendant necklace with lustrous freshwater pearl.",
       colors: JSON.stringify(["White", "Cream", "Pink"]),
       specifications: JSON.stringify([
@@ -196,7 +196,7 @@ async function main() {
       discount: JSON.stringify({ amount: 100, percentage: 15 }),
       rating: 4.6,
       categoryId: ringsCategory.id,
-      subcategoryId: ringsCategory.subcategories.find(s => s.slug === 'statement-rings')?.id || 1,
+      subcategoryId: ringsCategory.subcategories.find((s: any) => s.slug === 'statement-rings')?.id || 1,
       description: "Bold statement ring with geometric design and precious stones.",
       colors: JSON.stringify(["Gold", "Silver", "Rose Gold"]),
       specifications: JSON.stringify([
