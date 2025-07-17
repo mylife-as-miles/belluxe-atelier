@@ -1,0 +1,37 @@
+// filepath: c:\Users\MILES\Desktop\belluxe-atelier\prisma\schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // Change this to your database provider (e.g., mysql, sqlite)
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  title       String
+  srcUrl      String
+  gallery     String[]
+  price       Float
+  discount     Discount
+  rating      Float
+  category    String
+  subcategory String
+}
+
+model Discount {
+  id         Int     @id @default(autoincrement())
+  amount     Float
+  percentage Float
+  productId  Int     @unique
+  product    Product @relation(fields: [productId], references: [id])
+}
+
+model Review {
+  id      Int     @id @default(autoincrement())
+  user    String
+  content String
+  rating  Int
+  date    DateTime @default(now())
+}
