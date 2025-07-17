@@ -108,9 +108,9 @@ export default function Profile() {
           <div className="flex justify-between items-start">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                Welcome, {session.user.name}!
+                Welcome, {session.user?.name}!
               </h1>
-              <p className="text-gray-600 mt-1">{session.user.email}</p>
+              <p className="text-gray-600 mt-1">{session.user?.email}</p>
             </div>
             <Button
               onClick={handleSignOut}

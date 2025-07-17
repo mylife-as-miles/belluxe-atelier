@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 const prisma = new PrismaClient();
 
@@ -36,6 +38,7 @@ export async function GET(request: NextRequest) {
 // POST /api/orders - Create a new order
 export async function POST(request: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
     const body = await request.json();
     const {
       customerEmail,
@@ -60,9 +63,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create order with order items
+    // Create order with order items (link to user if authenticated)
     const order = await prisma.order.create({
       data: {
+        userId: session?.user?.id || null, // Link to user if logged in
         customerEmail,
         customerName,
         customerPhone,
