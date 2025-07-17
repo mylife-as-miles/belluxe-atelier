@@ -26,6 +26,16 @@ export type ProductSubcategory = {
   'jewelry-sets': 'jewelry-sets';
 };
 
+export type Specification = {
+  key: string;
+  value: string;
+};
+
+export type FAQ = {
+  question: string;
+  answer: string;
+};
+
 export type Product = {
   id: number;
   title: string;
@@ -36,4 +46,8 @@ export type Product = {
   rating: number;
   category: ProductCategory;
   subcategory: string;
+  description?: string;
+  colors?: string[];
+  specifications?: Specification[];
+  faqs?: FAQ[];
 };

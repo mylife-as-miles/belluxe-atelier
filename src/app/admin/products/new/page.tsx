@@ -419,9 +419,28 @@ export default function NewProductPage() {
 
         {/* Product Specifications */}
         <div className="mt-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Product Specifications
-          </label>
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-medium text-gray-700">
+              Product Specifications
+            </label>
+            <button
+              type="button"
+              onClick={() => {
+                const watchSpecs = [
+                  { key: "Movement", value: "Swiss Automatic" },
+                  { key: "Case Material", value: "Stainless Steel" },
+                  { key: "Water Resistance", value: "100m / 330ft" },
+                  { key: "Crystal", value: "Sapphire Crystal" },
+                  { key: "Case Diameter", value: "42mm" },
+                  { key: "Band Material", value: "Leather" }
+                ];
+                setFormData({ ...formData, specifications: watchSpecs });
+              }}
+              className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-md hover:bg-blue-200"
+            >
+              Load Watch Template
+            </button>
+          </div>
           {formData.specifications.map((spec, index) => (
             <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3 p-3 border border-gray-200 rounded-md">
               <input
@@ -462,9 +481,34 @@ export default function NewProductPage() {
 
         {/* FAQs */}
         <div className="mt-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Frequently Asked Questions (FAQs)
-          </label>
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-medium text-gray-700">
+              Frequently Asked Questions (FAQs)
+            </label>
+            <button
+              type="button"
+              onClick={() => {
+                const defaultFaqs = [
+                  { 
+                    question: "What materials are used in this product?", 
+                    answer: "This product is made from high-quality materials including premium metals and genuine leather where applicable." 
+                  },
+                  { 
+                    question: "Is this product water-resistant?", 
+                    answer: "Yes, this product features water resistance suitable for daily wear and light water exposure." 
+                  },
+                  { 
+                    question: "What warranty is included?", 
+                    answer: "This product comes with a 2-year international warranty covering manufacturing defects." 
+                  }
+                ];
+                setFormData({ ...formData, faqs: defaultFaqs });
+              }}
+              className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-md hover:bg-green-200"
+            >
+              Load FAQ Template
+            </button>
+          </div>
           {formData.faqs.map((faq, index) => (
             <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md">
               <input
@@ -499,9 +543,7 @@ export default function NewProductPage() {
           >
             Add FAQ
           </button>
-        </div>
-
-        <div className="mt-6 flex justify-end space-x-3">
+        </div>        <div className="mt-6 flex justify-end space-x-3">
           <button
             type="button"
             onClick={() => router.back()}
