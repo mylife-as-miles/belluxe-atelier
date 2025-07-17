@@ -14,9 +14,9 @@ model Product {
   id          Int      @id @default(autoincrement())
   title       String
   srcUrl      String
-  gallery     String[]
+  gallery     String   // JSON string of array
   price       Float
-  discount    Json
+  discount    String   // JSON string of discount object
   rating      Float
   category    String
   subcategory String
