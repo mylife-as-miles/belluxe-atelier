@@ -23,12 +23,23 @@ import {
 import { Product } from "@/types/product.types";
 
 export default async function ShopPage() {
-  const products = await prisma.product.findMany({
+  const productsRaw = await prisma.product.findMany({
     include: {
       category: true,
       subcategory: true,
     },
   });
+
+  const products = productsRaw.map(product => ({
+    ...product,
+    gallery: JSON.parse(product.gallery),
+    discount: JSON.parse(product.discount),
+    colors: JSON.parse(product.colors || "[]"),
+    specifications: JSON.parse(product.specifications || "[]"),
+    faqs: JSON.parse(product.faqs || "[]"),
+    category: product.category.slug as any,
+    subcategory: product.subcategory?.slug || "",
+  }));
 
   return (
     <main className="pb-20">

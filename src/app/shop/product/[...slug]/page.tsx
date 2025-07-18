@@ -3,7 +3,7 @@ import ProductListSec from "@/components/common/ProductListSec";
 import BreadcrumbProduct from "@/components/product-page/BreadcrumbProduct";
 import Header from "@/components/product-page/Header";
 import Tabs from "@/components/product-page/Tabs";
-import { Product } from "@/types/product.types";
+import { Product, ProductCategory } from "@/types/product.types";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -34,8 +34,21 @@ export default async function ProductPage({
     notFound();
   }
 
+  // Transform database product to match Product type
+  const transformedProduct: Product = {
+    ...productData,
+    id: productData.id.toString(),
+    gallery: JSON.parse(productData.gallery),
+    discount: JSON.parse(productData.discount),
+    colors: JSON.parse(productData.colors || "[]"),
+    specifications: JSON.parse(productData.specifications || "[]"),
+    faqs: JSON.parse(productData.faqs || "[]"),
+    category: productData.category.slug as ProductCategory,
+    subcategory: productData.subcategory?.slug || "",
+  };
+
   // Filter out the current product from related products and get up to 4 random ones
-  const relatedProducts = await prisma.product.findMany({
+  const relatedProductsRaw = await prisma.product.findMany({
     where: {
       NOT: {
         id: productData.id,
@@ -48,13 +61,25 @@ export default async function ProductPage({
     take: 4,
   });
 
+  const relatedProducts: Product[] = relatedProductsRaw.map(product => ({
+    ...product,
+    id: product.id.toString(),
+    gallery: JSON.parse(product.gallery),
+    discount: JSON.parse(product.discount),
+    colors: JSON.parse(product.colors || "[]"),
+    specifications: JSON.parse(product.specifications || "[]"),
+    faqs: JSON.parse(product.faqs || "[]"),
+    category: product.category.slug as ProductCategory,
+    subcategory: product.subcategory?.slug || "",
+  }));
+
   return (
     <main>
       <div className="max-w-frame mx-auto px-4 xl:px-0">
         <hr className="h-[1px] border-t-black/10 mb-5 sm:mb-6" />
         <BreadcrumbProduct title={productData?.title ?? "product"} />
         <section className="mb-11">
-          <Header data={productData} />
+          <Header data={transformedProduct} />
         </section>
         <Tabs />
       </div>

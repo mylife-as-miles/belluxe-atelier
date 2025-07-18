@@ -1,6 +1,20 @@
 export type Discount = {
-  amount: number;
-  percentage: number;
+  amount: nuexport type Product = {
+  id: string;
+  title: string;
+  srcUrl: string;
+  gallery?: string[];
+  price: number;
+  discount: Discount;
+  rating: number;
+  stock: number;
+  category: ProductCategory;
+  subcategory: string;
+  description?: string | null;
+  colors?: string[];
+  specifications?: Specification[];
+  faqs?: FAQ[];
+};age: number;
 };
 
 export type ProductCategory = 

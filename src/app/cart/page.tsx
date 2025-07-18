@@ -1,6 +1,9 @@
 "use client";
 
-import BreadcrumbCart from "@/components/cart-page/BreadcrumbCart";
+import Breadcr  const getProductStock = (id: string): number => {
+    const product = products.find((p) => p.id === id);
+    return product?.stock ?? 0;
+  };art from "@/components/cart-page/BreadcrumbCart";
 import { Button } from "@/components/ui/button";
 import InputGroup from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
