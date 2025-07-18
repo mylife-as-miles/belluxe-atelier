@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,10 +12,10 @@ model Category {
   name          String        @unique
   slug          String        @unique
   description   String?
-  subcategories Subcategory[]
-  products      Product[]
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
+  products      Product[]
+  subcategories Subcategory[]
 }
 
 model Subcategory {
@@ -26,34 +23,34 @@ model Subcategory {
   name        String
   slug        String    @unique
   description String?
-  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId  Int
-  products    Product[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  products    Product[]
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
 
 model Product {
   id             Int          @id @default(autoincrement())
   title          String
   srcUrl         String
-  gallery        String       // JSON string of array
+  gallery        String
   price          Float
-  discount       String       // JSON string of discount object
+  discount       String
   rating         Float
-  category       Category     @relation(fields: [categoryId], references: [id])
   categoryId     Int
-  subcategory    Subcategory? @relation(fields: [subcategoryId], references: [id])
   subcategoryId  Int?
-  description    String?      // Product description
-  colors         String?      // JSON string of colors array
-  specifications String?      // JSON string of specifications array
-  faqs           String?      // JSON string of FAQs array
-  reviews        Review[]
-  orderItems     OrderItem[]
-  cartItems      CartItem[]
+  description    String?
+  colors         String?
+  specifications String?
+  faqs           String?
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
+  cartItems      CartItem[]
+  orderItems     OrderItem[]
+  category       Category     @relation(fields: [categoryId], references: [id])
+  subcategory    Subcategory? @relation(fields: [subcategoryId], references: [id])
+  reviews        Review[]
 }
 
 model Review {
@@ -62,19 +59,18 @@ model Review {
   content   String
   rating    Int
   date      String
-  product   Product @relation(fields: [productId], references: [id])
   productId Int
+  product   Product @relation(fields: [productId], references: [id])
 }
 
 model Order {
   id              String        @id @default(cuid())
-  userId          String?       // Link to User (optional for guest checkout)
-  user            User?         @relation(fields: [userId], references: [id])
+  userId          String?
   customerEmail   String
   customerName    String
   customerPhone   String?
-  shippingAddress String        // JSON string of address object
-  billingAddress  String?       // JSON string of address object
+  shippingAddress String
+  billingAddress  String?
   subtotal        Float
   tax             Float
   shipping        Float
@@ -84,33 +80,34 @@ model Order {
   paymentMethod   String?
   trackingNumber  String?
   notes           String?
-  orderItems      OrderItem[]
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
+  user            User?         @relation(fields: [userId], references: [id])
+  orderItems      OrderItem[]
 }
 
 model OrderItem {
-  id        Int     @id @default(autoincrement())
-  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  id        Int      @id @default(autoincrement())
   orderId   String
-  product   Product @relation(fields: [productId], references: [id])
   productId Int
   quantity  Int
-  price     Float   // Price at time of order
-  color     String? // Selected color
+  price     Float
+  color     String?
   createdAt DateTime @default(now())
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id])
 }
 
 model CartItem {
   id        String   @id @default(cuid())
-  sessionId String   // For guest users
-  userId    String?  // For logged-in users
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sessionId String
+  userId    String?
   productId Int
   quantity  Int
-  color     String?  // Selected color
+  color     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@unique([sessionId, productId, color])
 }
@@ -128,8 +125,7 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -148,10 +144,10 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  password      String? // for credentials provider
+  password      String?
   accounts      Account[]
-  sessions      Session[]
   orders        Order[]
+  sessions      Session[]
 }
 
 model VerificationToken {

@@ -193,7 +193,7 @@ export default function AdminOrdersPage() {
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-purple-600" />
               <div>
-                <p className="text-sm text-muted-foreground">Today's Orders</p>
+                <p className="text-sm text-muted-foreground">Today&apos;s Orders</p>
                 <p className="text-2xl font-bold">
                   {orders.filter(order => 
                     new Date(order.createdAt).toDateString() === new Date().toDateString()
@@ -433,4 +433,3 @@ export default function AdminOrdersPage() {
       </Card>
     </div>
   );
-}
