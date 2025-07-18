@@ -194,13 +194,14 @@ export default function CartPage() {
                     </span>
                   </div>
                   <div className="flex items-center space-x-2.5">
-                    <InputGroup
-                      icon={
+                    <InputGroup className="bg-transparent">
+                      <InputGroup.Text>
                         <MdOutlineLocalOffer className="text-2xl text-black/40" />
-                      }
-                      placeholder="Add promo code"
-                      className="bg-transparent"
-                    />
+                      </InputGroup.Text>
+                      <InputGroup.Input
+                        placeholder="Add promo code"
+                      />
+                    </InputGroup>
                     <Button className="bg-black text-white h-12 text-base font-bold w-full max-w-[125px]">
                       Apply
                     </Button>
