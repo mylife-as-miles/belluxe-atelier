@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 export interface CartItem {
-  id: number
+  id: string
   title: string
   price: number
   srcUrl: string
@@ -15,8 +15,8 @@ interface CartState {
   items: CartItem[]
   isOpen: boolean
   addItem: (item: Omit<CartItem, 'quantity'>, quantity?: number) => void
-  removeItem: (id: number, color?: string) => void
-  updateQuantity: (id: number, quantity: number, color?: string) => void
+  removeItem: (id: string, color?: string) => void
+  updateQuantity: (id: string, quantity: number, color?: string) => void
   clearCart: () => void
   openCart: () => void
   closeCart: () => void
@@ -48,7 +48,7 @@ export const useCartStore = create<CartState>()(
         }
       },
       
-      removeItem: (id, color) => {
+      removeItem: (id: string, color?: string) => {
         const items = get().items
         const updatedItems = items.filter(
           (item) => !(item.id === id && item.color === color)
@@ -56,7 +56,7 @@ export const useCartStore = create<CartState>()(
         set({ items: updatedItems })
       },
       
-      updateQuantity: (id, quantity, color) => {
+      updateQuantity: (id: string, quantity: number, color?: string) => {
         if (quantity <= 0) {
           get().removeItem(id, color)
           return

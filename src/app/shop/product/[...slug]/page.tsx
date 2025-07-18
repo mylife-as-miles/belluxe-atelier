@@ -43,8 +43,8 @@ export default async function ProductPage({
     colors: JSON.parse(productData.colors || "[]"),
     specifications: JSON.parse(productData.specifications || "[]"),
     faqs: JSON.parse(productData.faqs || "[]"),
-    category: productData.category.slug as ProductCategory,
-    subcategory: productData.subcategory?.slug || "",
+    category: productData.category.name as ProductCategory,
+    subcategory: productData.subcategory?.name || "",
   };
 
   // Filter out the current product from related products and get up to 4 random ones
@@ -69,8 +69,8 @@ export default async function ProductPage({
     colors: JSON.parse(product.colors || "[]"),
     specifications: JSON.parse(product.specifications || "[]"),
     faqs: JSON.parse(product.faqs || "[]"),
-    category: product.category.slug as ProductCategory,
-    subcategory: product.subcategory?.slug || "",
+    category: product.category.name as ProductCategory,
+    subcategory: product.subcategory?.name || "",
   }));
 
   return (

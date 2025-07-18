@@ -38,8 +38,8 @@ export default async function ShopPage() {
     colors: JSON.parse(product.colors || "[]"),
     specifications: JSON.parse(product.specifications || "[]"),
     faqs: JSON.parse(product.faqs || "[]"),
-    category: product.category.slug as ProductCategory,
-    subcategory: product.subcategory?.slug || "",
+    category: product.category.name as ProductCategory,
+    subcategory: product.subcategory?.name || "",
   }));
 
   return (

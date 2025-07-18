@@ -1,9 +1,6 @@
 "use client";
 
-import Breadcr  const getProductStock = (id: string): number => {
-    const product = products.find((p) => p.id === id);
-    return product?.stock ?? 0;
-  };art from "@/components/cart-page/BreadcrumbCart";
+import BreadcrumbCart from "@/components/cart-page/BreadcrumbCart";
 import { Button } from "@/components/ui/button";
 import InputGroup from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
@@ -25,14 +22,17 @@ export default function CartPage() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch("/api/products");
-      const data = await res.json();
-      setProducts(data);
+      if (items.length > 0) {
+        const productIds = items.map((item) => item.id);
+        const res = await fetch(`/api/products?ids=${productIds.join(',')}`);
+        const data = await res.json();
+        setProducts(data);
+      }
     };
     fetchProducts();
-  }, []);
+  }, [items]);
 
-  const getProductStock = (id: number) => {
+  const getProductStock = (id: string) => {
     const product = products.find((p) => p.id === id);
     return product ? product.stock : 0;
   };
@@ -56,7 +56,7 @@ export default function CartPage() {
                 {items.map((item, idx, arr) => {
                   const stock = getProductStock(item.id);
                   const isOutOfStock = stock === 0;
-                  const isLowStock = item.quantity > stock && stock > 0;
+                  const isLowStock = !isOutOfStock && item.quantity >= stock;
 
                   return (
                     <React.Fragment key={`${item.id}-${item.color}-${idx}`}>
@@ -109,14 +109,13 @@ export default function CartPage() {
                                     item.color
                                   )
                                 }
+                                disabled={item.quantity <= 1}
                               >
-                                <Minus className="h-3 w-3" />
+                                <Minus className="h-4 w-4" />
                               </Button>
-
-                              <span className="w-12 text-center font-medium">
+                              <span className="text-lg font-medium">
                                 {item.quantity}
                               </span>
-
                               <Button
                                 variant="outline"
                                 size="icon"
@@ -128,24 +127,21 @@ export default function CartPage() {
                                     item.color
                                   )
                                 }
-                                disabled={item.quantity >= stock}
+                                disabled={item.quantity >= stock || isOutOfStock}
                               >
-                                <Plus className="h-3 w-3" />
+                                <Plus className="h-4 w-4" />
                               </Button>
                             </div>
-
-                            <div className="ml-auto">
-                              {isOutOfStock && (
-                                <p className="text-red-500 text-sm font-semibold">
-                                  Out of Stock
-                                </p>
-                              )}
-                              {isLowStock && (
-                                <p className="text-yellow-500 text-sm font-semibold">
-                                  Only {stock} left in stock
-                                </p>
-                              )}
-                            </div>
+                            {isOutOfStock && (
+                              <p className="text-sm text-red-600 font-semibold">
+                                Out of Stock
+                              </p>
+                            )}
+                            {isLowStock && (
+                              <p className="text-sm text-yellow-600 font-semibold">
+                                Low Stock (only {stock} left)
+                              </p>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -156,82 +152,62 @@ export default function CartPage() {
                   );
                 })}
               </div>
-              <div className="w-full lg:max-w-[395px] border border-black/10 rounded-[20px] p-5 md:p-6">
-                <h3
-                  className={cn([
-                    integralCF.className,
-                    "font-bold text-xl md:text-2xl text-black uppercase mb-5",
-                  ])}
-                >
-                  Order Summary
-                </h3>
-                <div className="space-y-4 text-sm md:text-base">
-                  <div className="flex items-center justify-between">
+              <div className="w-full lg:max-w-[420px] p-5 md:p-6 rounded-[20px] border border-black/10 space-y-5">
+                <h3 className="font-bold text-2xl text-black">Order Summary</h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between">
                     <span className="text-black/60">Subtotal</span>
-                    <span className="font-semibold text-black">
+                    <span className="font-medium text-black">
                       ₦{totalPrice.toLocaleString()}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-black/60">Discount (-20%)</span>
-                    <span className="font-semibold text-[#FF3333]">
-                      -₦{(totalPrice * 0.2).toLocaleString()}
-                    </span>
+                  <div className="flex justify-between">
+                    <span className="text-black/60">Discount</span>
+                    <span className="font-medium text-black">-₦0.00</span>
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className="flex justify-between">
                     <span className="text-black/60">Delivery Fee</span>
-                    <span className="font-semibold text-black">
-                      ₦{(totalPrice * 0.05).toLocaleString()}
-                    </span>
+                    <span className="font-medium text-black">₦0.00</span>
                   </div>
                   <hr className="border-t-black/10" />
-                  <div className="flex items-center justify-between">
-                    <span className="text-black">Total</span>
-                    <span className="font-bold text-xl md:text-2xl text-black">
-                      ₦
-                      {(
-                        totalPrice -
-                        totalPrice * 0.2 +
-                        totalPrice * 0.05
-                      ).toLocaleString()}
+                  <div className="flex justify-between">
+                    <span className="font-medium text-black">Total</span>
+                    <span className="font-bold text-black">
+                      ₦{totalPrice.toLocaleString()}
                     </span>
                   </div>
-                  <div className="flex items-center space-x-2.5">
-                    <InputGroup className="bg-transparent">
-                      <InputGroup.Text>
-                        <MdOutlineLocalOffer className="text-2xl text-black/40" />
-                      </InputGroup.Text>
-                      <InputGroup.Input
-                        placeholder="Add promo code"
-                      />
-                    </InputGroup>
-                    <Button className="bg-black text-white h-12 text-base font-bold w-full max-w-[125px]">
-                      Apply
-                    </Button>
-                  </div>
-                  <Button
-                    asChild
-                    className="bg-black text-white h-12 text-base font-bold w-full"
-                  >
-                    <Link href="/checkout">
-                      Go to Checkout{" "}
-                      <FaArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
                 </div>
+                <div className="flex space-x-2">
+                  <div className="relative w-full">
+                    <MdOutlineLocalOffer className="absolute left-3 top-1/2 -translate-y-1/2 text-black/40" />
+                    <InputGroup
+                      placeholder="Add promo code"
+                      className="pl-9"
+                    />
+                  </div>
+                  <Button className="font-bold">Apply</Button>
+                </div>
+                <Button
+                  asChild
+                  className="w-full bg-black text-white font-bold h-12"
+                >
+                  <Link href="/checkout">
+                    Go to Checkout <FaArrowRight className="ml-2" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </>
         ) : (
           <div className="text-center py-20">
-            <TbBasketExclamation className="text-7xl text-black/10 mx-auto mb-5" />
+            <TbBasketExclamation className="text-8xl text-gray-300 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-black mb-2">
               Your cart is empty
             </h2>
             <p className="text-black/60 mb-6">
-              Looks like you haven&apos;t added anything to your cart yet.
+              Looks like you haven't added anything to your cart yet.
             </p>
-            <Button asChild className="bg-black text-white">
+            <Button asChild>
               <Link href="/shop">Continue Shopping</Link>
             </Button>
           </div>
