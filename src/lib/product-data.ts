@@ -5,7 +5,7 @@ import { fallbackProductsData } from "@/lib/fallback-data";
 // Function to get products with fallback
 export async function getProductsData() {
   try {
-    const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3001';
+    const baseUrl = 'https://belluxe-atelier.vercel.app';
     const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
     if (!res.ok) {
       console.warn('API failed, using fallback data');
