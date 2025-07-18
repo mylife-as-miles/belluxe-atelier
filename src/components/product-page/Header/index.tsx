@@ -38,7 +38,7 @@ const Header = ({ data }: { data: Product }) => {
               <span className="text-black/60">/5</span>
             </span>
           </div>
-          <div className="flex items-center space-x-2.5 sm:space-x-3 mb-5">
+          <div className="flex items-center space-x-2.5 sm:space-x-3 mb-2">
             {data.discount.percentage > 0 ? (
               <span className="font-bold text-black text-2xl sm:text-[32px]">
                 {`₦${Math.round(
@@ -74,6 +74,13 @@ const Header = ({ data }: { data: Product }) => {
                   {`-₦${data.discount.amount.toLocaleString()}`}
                 </span>
               )
+            )}
+          </div>
+          <div className="mb-5">
+            {data.stock > 0 ? (
+              <p className="text-green-500">In Stock</p>
+            ) : (
+              <p className="text-red-500">Out of Stock</p>
             )}
           </div>
           <p className="text-sm sm:text-base text-black/60 mb-5">

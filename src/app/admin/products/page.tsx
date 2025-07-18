@@ -48,9 +48,10 @@ export default async function ProductsPage() {
                       alt={product.title}
                     />
                     <div className="ml-4">
-                      <h3 className="text-lg font-medium text-gray-900">{product.title}</h3>
-                      <p className="text-sm text-gray-500">{product.category} • {product.subcategory}</p>
-                      <p className="text-sm font-medium text-gray-900">₦{product.price.toLocaleString()}</p>
+                      <div className="text-sm font-medium text-gray-900">{product.title}</div>
+                      <div className="text-sm text-gray-500">
+                        Stock: {product.stock !== null ? product.stock : 'N/A'}
+                      </div>
                     </div>
                   </div>
                   <div className="flex space-x-2">

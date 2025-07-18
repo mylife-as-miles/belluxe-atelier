@@ -1,8 +1,4 @@
-import {
-  newArrivalsData,
-  relatedProductData,
-  topSellingData,
-} from "@/lib/product-data";
+import prisma from "@/lib/prisma";
 import ProductListSec from "@/components/common/ProductListSec";
 import BreadcrumbProduct from "@/components/product-page/BreadcrumbProduct";
 import Header from "@/components/product-page/Header";
@@ -10,34 +6,39 @@ import Tabs from "@/components/product-page/Tabs";
 import { Product } from "@/types/product.types";
 import { notFound } from "next/navigation";
 
-const data: Product[] = [
-  ...newArrivalsData,
-  ...topSellingData,
-  ...relatedProductData,
-];
-
 export async function generateStaticParams() {
-  return data.map((product) => ({
+  const products = await prisma.product.findMany({
+    select: { id: true },
+  });
+  return products.map((product) => ({
     slug: [product.id.toString()],
   }));
 }
 
-export default function ProductPage({
+export default async function ProductPage({
   params,
 }: {
   params: { slug: string[] };
 }) {
-  const productData = data.find(
-    (product) => product.id === Number(params.slug[0])
-  );
+  const productData = await prisma.product.findUnique({
+    where: {
+      id: params.slug[0],
+    },
+  });
 
   if (!productData?.title) {
     notFound();
   }
 
   // Filter out the current product from related products and get up to 4 random ones
-  const filteredRelatedProducts = data.filter(product => product.id !== productData.id);
-  const relatedProducts = filteredRelatedProducts.slice(0, 4);
+  const relatedProducts = await prisma.product.findMany({
+    where: {
+      NOT: {
+        id: productData.id,
+      },
+    },
+    take: 4,
+  });
 
   return (
     <main>

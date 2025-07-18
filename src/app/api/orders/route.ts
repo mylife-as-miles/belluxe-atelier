@@ -51,56 +51,73 @@ export async function POST(request: NextRequest) {
       shipping,
       total,
       paymentMethod,
-      notes,
-      orderItems
+      orderItems,
     } = body;
 
-    // Validate required fields
-    if (!customerEmail || !customerName || !shippingAddress || !orderItems?.length) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
+    if (!customerEmail || !shippingAddress || !total || !orderItems) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Create order with order items (link to user if authenticated)
-    const order = await prisma.order.create({
-      data: {
-        userId: session?.user?.id || null, // Link to user if logged in
-        customerEmail,
-        customerName,
-        customerPhone,
-        shippingAddress,
-        billingAddress,
-        subtotal,
-        tax,
-        shipping,
-        total,
-        paymentMethod,
-        notes,
-        orderItems: {
-          create: orderItems.map((item: any) => ({
-            productId: item.productId,
-            quantity: item.quantity,
-            price: item.price,
-            color: item.color
-          }))
-        }
-      },
-      include: {
-        orderItems: {
-          include: {
-            product: true
-          }
+    const order = await prisma.$transaction(async (tx) => {
+      // 1. Check stock for all items
+      for (const item of orderItems) {
+        const product = await tx.product.findUnique({
+          where: { id: item.productId },
+        });
+
+        if (!product || product.stock < item.quantity) {
+          throw new Error(`Not enough stock for product: ${product?.title || item.productId}`);
         }
       }
+
+      // 2. Create the order
+      const newOrder = await tx.order.create({
+        data: {
+          userId: session?.user?.id,
+          customerEmail,
+          customerName,
+          customerPhone,
+          shippingAddress,
+          billingAddress,
+          subtotal,
+          tax,
+          shipping,
+          total,
+          paymentMethod,
+          orderItems: {
+            create: orderItems.map((item: any) => ({
+              productId: item.productId,
+              quantity: item.quantity,
+              price: item.price,
+              color: item.color,
+            })),
+          },
+        },
+        include: {
+          orderItems: true,
+        },
+      });
+
+      // 3. Decrease stock for each product
+      for (const item of orderItems) {
+        await tx.product.update({
+          where: { id: item.productId },
+          data: {
+            stock: {
+              decrement: item.quantity,
+            },
+          },
+        });
+      }
+
+      return newOrder;
     });
 
     return NextResponse.json(order, { status: 201 });
-  } catch (error) {
-    console.error('Error creating order:', error);
+  } catch (error: any) {
+    console.error("Error creating order:", error);
     return NextResponse.json(
-      { error: 'Failed to create order' },
+      { error: error.message || "Failed to create order" },
       { status: 500 }
     );
   }

@@ -17,6 +17,7 @@ export default function NewProductPage() {
     discountAmount: "",
     discountPercentage: "",
     rating: "",
+    stock: "",
     categoryId: "",
     subcategoryId: "",
     description: "",
@@ -105,19 +106,20 @@ export default function NewProductPage() {
       const productData = {
         title: formData.title,
         srcUrl: formData.srcUrl,
-        gallery: formData.gallery.filter(url => url.trim() !== ""),
+        gallery: JSON.stringify(formData.gallery.filter(url => url.trim() !== "")),
         price: parseFloat(formData.price),
-        discount: {
+        discount: JSON.stringify({
           amount: parseFloat(formData.discountAmount) || 0,
           percentage: parseFloat(formData.discountPercentage) || 0,
-        },
+        }),
         rating: parseFloat(formData.rating),
+        stock: parseInt(formData.stock, 10),
         categoryId: parseInt(formData.categoryId),
         subcategoryId: formData.subcategoryId ? parseInt(formData.subcategoryId) : null,
         description: formData.description,
-        colors: formData.colors.filter(color => color.trim() !== ""),
-        specifications: formData.specifications.filter(spec => spec.key.trim() !== "" && spec.value.trim() !== ""),
-        faqs: formData.faqs.filter(faq => faq.question.trim() !== "" && faq.answer.trim() !== ""),
+        colors: JSON.stringify(formData.colors.filter(color => color.trim() !== "")),
+        specifications: JSON.stringify(formData.specifications.filter(spec => spec.key.trim() !== "" && spec.value.trim() !== "")),
+        faqs: JSON.stringify(formData.faqs.filter(faq => faq.question.trim() !== "" && faq.answer.trim() !== "")),
       };
 
       const response = await fetch("/api/products", {
@@ -286,6 +288,23 @@ export default function NewProductPage() {
             />
           </div>
 
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Stock Quantity
+            </label>
+            <input
+              type="number"
+              className="border border-gray-300 rounded-md px-3 py-2"
+              value={formData.stock}
+              onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
+              placeholder="Number of items in stock"
+              required
+            />
+          </div>
+        </div>
+
+        {/* Category and Subcategory */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Category
