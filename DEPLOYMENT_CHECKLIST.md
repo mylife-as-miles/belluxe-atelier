@@ -1,4 +1,6 @@
-# Deployment Checklist
+npm install -g vercel
+vercel login
+vercel# Deployment Checklist
 
 ## ✅ Pre-Deployment Steps
 
