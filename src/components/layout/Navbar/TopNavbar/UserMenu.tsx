@@ -82,11 +82,27 @@ export default function UserMenu() {
             </div>
             
             <Link
+              href="/account"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={() => setIsOpen(false)}
+            >
+              My Account
+            </Link>
+            
+            <Link
+              href="/account/orders"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={() => setIsOpen(false)}
+            >
+              My Orders
+            </Link>
+            
+            <Link
               href="/profile"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               onClick={() => setIsOpen(false)}
             >
-              Profile & Orders
+              Profile Settings
             </Link>
             
             <button
