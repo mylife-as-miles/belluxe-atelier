@@ -1,5 +1,5 @@
 import BreadcrumbShop from "@/components/shop-page/BreadcrumbShop";
-
+import { prisma } from "@/lib/prisma";
 import {
   Select,
   SelectContent,
@@ -10,7 +10,6 @@ import {
 import MobileFilters from "@/components/shop-page/filters/MobileFilters";
 import Filters from "@/components/shop-page/filters";
 import { FiSliders } from "react-icons/fi";
-import { newArrivalsData, relatedProductData, topSellingData } from "@/lib/product-data";
 import ProductCard from "@/components/common/ProductCard";
 import {
   Pagination,
@@ -21,8 +20,11 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Product } from "@/types/product.types";
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const products = await prisma.product.findMany();
+
   return (
     <main className="pb-20">
       <div className="max-w-frame mx-auto px-4 xl:px-0">
@@ -39,7 +41,9 @@ export default function ShopPage() {
           <div className="flex flex-col w-full space-y-5">
             <div className="flex flex-col lg:flex-row lg:justify-between">
               <div className="flex items-center justify-between">
-                <h1 className="font-bold text-2xl md:text-[32px]">Luxury Watches</h1>
+                <h1 className="font-bold text-2xl md:text-[32px]">
+                  Luxury Watches
+                </h1>
                 <MobileFilters />
               </div>
               <div className="flex flex-col sm:items-center sm:flex-row">
@@ -62,11 +66,7 @@ export default function ShopPage() {
               </div>
             </div>
             <div className="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-              {[
-                ...relatedProductData.slice(1, 4),
-                ...newArrivalsData.slice(1, 4),
-                ...topSellingData.slice(1, 4),
-              ].map((product) => (
+              {products.map((product: Product) => (
                 <ProductCard key={product.id} data={product} />
               ))}
             </div>

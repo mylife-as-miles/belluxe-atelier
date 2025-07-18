@@ -45,6 +45,11 @@ const ProductCard = ({ data }: ProductCardProps) => {
         className="block w-full"
       >
         <div className="bg-[#F0EEED] rounded-[13px] lg:rounded-[20px] w-full lg:max-w-[295px] aspect-square mb-2.5 xl:mb-4 overflow-hidden relative">
+          {data.stock === 0 && (
+            <div className="absolute top-2 left-2 bg-black text-white text-xs font-semibold px-2 py-1 rounded-md z-10">
+              Out of Stock
+            </div>
+          )}
           <Image
             src={data.srcUrl}
             width={295}
@@ -57,6 +62,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
             onClick={handleAddToCart}
             className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 h-8 w-8 p-0"
             size="icon"
+            disabled={data.stock === 0}
           >
             <ShoppingCart className="h-4 w-4" />
           </Button>
