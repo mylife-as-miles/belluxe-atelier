@@ -110,7 +110,7 @@ export default function OrderConfirmationPage() {
             Order Confirmed!
           </h1>
           <p className="text-gray-600">
-            Thank you for your order. We've received your order and will begin processing it soon.
+            Thank you for your order. We&apos;ve received your order and will begin processing it soon.
           </p>
         </div>
 
@@ -184,7 +184,7 @@ export default function OrderConfirmationPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  We'll send order updates to: <br />
+                  We&apos;ll send order updates to: <br />
                   <span className="font-medium text-black">{order.customerEmail}</span>
                 </p>
               </CardContent>

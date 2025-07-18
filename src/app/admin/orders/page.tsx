@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -79,7 +79,7 @@ export default function AdminOrdersPage() {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [updatingOrder, setUpdatingOrder] = useState<string | null>(null);
 
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
       const url = statusFilter === "all" ? "/api/orders" : `/api/orders?status=${statusFilter}`;
       const response = await fetch(url);
@@ -92,7 +92,7 @@ export default function AdminOrdersPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [statusFilter]);
 
   const updateOrderStatus = async (orderId: string, field: string, value: string) => {
     setUpdatingOrder(orderId);
@@ -123,7 +123,7 @@ export default function AdminOrdersPage() {
 
   useEffect(() => {
     fetchOrders();
-  }, [statusFilter]);
+  }, [statusFilter, fetchOrders]);
 
   const getStatusBadge = (status: string, type: "status" | "payment") => {
     const colors = type === "status" ? statusColors : paymentStatusColors;
@@ -433,3 +433,4 @@ export default function AdminOrdersPage() {
       </Card>
     </div>
   );
+}

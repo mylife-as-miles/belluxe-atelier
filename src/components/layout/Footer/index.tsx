@@ -77,7 +77,7 @@ const Footer = () => {
                 BELLUXE ATELIER
               </h1>
               <p className="text-black/60 text-sm mb-9">
-                We have timepieces that suit your style and which you're proud to
+                We have timepieces that suit your style and which you&apos;re proud to
                 wear. From luxury to sport watches for everyone.
               </p>
               <div className="flex items-center">
