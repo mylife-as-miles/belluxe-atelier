@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 export interface CartItem {
-  id: string
+  id: number
   title: string
   price: number
   srcUrl: string
@@ -15,8 +15,8 @@ interface CartState {
   items: CartItem[]
   isOpen: boolean
   addItem: (item: Omit<CartItem, 'quantity'>, quantity?: number) => void
-  removeItem: (id: string, color?: string) => void
-  updateQuantity: (id: string, quantity: number, color?: string) => void
+  removeItem: (id: number, color?: string) => void
+  updateQuantity: (id: number, quantity: number, color?: string) => void
   clearCart: () => void
   openCart: () => void
   closeCart: () => void

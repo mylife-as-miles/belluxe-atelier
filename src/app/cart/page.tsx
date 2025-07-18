@@ -29,7 +29,7 @@ export default function CartPage() {
     fetchProducts();
   }, []);
 
-  const getProductStock = (id: string) => {
+  const getProductStock = (id: number) => {
     const product = products.find((p) => p.id === id);
     return product ? product.stock : 0;
   };
@@ -229,87 +229,6 @@ export default function CartPage() {
             </p>
             <Button asChild className="bg-black text-white">
               <Link href="/shop">Continue Shopping</Link>
-            </Button>
-          </div>
-        )}
-      </div>
-    </main>
-  );
-}
-                            <p className="text-lg font-bold">
-                              ₦{(item.price * item.quantity).toLocaleString()}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {arr.length - 1 !== idx && (
-                      <hr className="border-t-black/10" />
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
-              <div className="w-full lg:max-w-[505px] p-5 md:px-6 flex-col space-y-4 md:space-y-6 rounded-[20px] border border-black/10">
-                <h6 className="text-xl md:text-2xl font-bold text-black">
-                  Order Summary
-                </h6>
-                <div className="flex flex-col space-y-5">
-                  <div className="flex items-center justify-between">
-                    <span className="md:text-xl text-black/60">Subtotal</span>
-                    <span className="md:text-xl font-bold">₦{totalPrice.toLocaleString()}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="md:text-xl text-black/60">
-                      Delivery Fee
-                    </span>
-                    <span className="md:text-xl font-bold">Free</span>
-                  </div>
-                  <hr className="border-t-black/10" />
-                  <div className="flex items-center justify-between">
-                    <span className="md:text-xl text-black">Total</span>
-                    <span className="text-xl md:text-2xl font-bold">
-                      ₦{totalPrice.toLocaleString()}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3">
-                  <InputGroup className="bg-[#F0F0F0]">
-                    <InputGroup.Text>
-                      <MdOutlineLocalOffer className="text-black/40 text-2xl" />
-                    </InputGroup.Text>
-                    <InputGroup.Input
-                      type="text"
-                      name="code"
-                      placeholder="Add promo code"
-                      className="bg-transparent placeholder:text-black/40"
-                    />
-                  </InputGroup>
-                  <Button
-                    type="button"
-                    className="bg-black rounded-full w-full max-w-[119px] h-[48px]"
-                  >
-                    Apply
-                  </Button>
-                </div>
-                <Button
-                  type="button"
-                  className="text-sm md:text-base font-medium bg-black rounded-full w-full py-4 h-[54px] md:h-[60px] group"
-                  asChild
-                >
-                  <Link href="/checkout">
-                    Go to Checkout{" "}
-                    <FaArrowRight className="text-xl ml-2 group-hover:translate-x-1 transition-all" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </>
-        ) : (
-          <div className="flex items-center flex-col text-gray-300 mt-32">
-            <TbBasketExclamation strokeWidth={1} className="text-6xl" />
-            <span className="block mb-4">Your shopping cart is empty.</span>
-            <Button className="rounded-full w-24" asChild>
-              <Link href="/shop">Shop</Link>
             </Button>
           </div>
         )}

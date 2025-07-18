@@ -37,14 +37,14 @@ export type FAQ = {
 };
 
 export type Product = {
-  id: string;
+  id: number;
   title: string;
   srcUrl: string;
   gallery?: string[];
   price: number;
   discount: Discount;
   rating: number;
-  stock: number;
+  stock?: number;
   category: ProductCategory;
   subcategory: string;
   description?: string;

@@ -23,7 +23,12 @@ import {
 import { Product } from "@/types/product.types";
 
 export default async function ShopPage() {
-  const products = await prisma.product.findMany();
+  const products = await prisma.product.findMany({
+    include: {
+      category: true,
+      subcategory: true,
+    },
+  });
 
   return (
     <main className="pb-20">

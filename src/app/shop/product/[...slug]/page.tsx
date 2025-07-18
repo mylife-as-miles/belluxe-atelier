@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import ProductListSec from "@/components/common/ProductListSec";
 import BreadcrumbProduct from "@/components/product-page/BreadcrumbProduct";
 import Header from "@/components/product-page/Header";
@@ -22,7 +22,11 @@ export default async function ProductPage({
 }) {
   const productData = await prisma.product.findUnique({
     where: {
-      id: params.slug[0],
+      id: parseInt(params.slug[0]),
+    },
+    include: {
+      category: true,
+      subcategory: true,
     },
   });
 
@@ -36,6 +40,10 @@ export default async function ProductPage({
       NOT: {
         id: productData.id,
       },
+    },
+    include: {
+      category: true,
+      subcategory: true,
     },
     take: 4,
   });
