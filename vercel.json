@@ -4,10 +4,6 @@
   "outputDirectory": ".next",
   "installCommand": "npm install",
   "devCommand": "npm run dev",
-  "env": {
-    "NEXTAUTH_URL": "https://belluxe-atelier.vercel.app",
-    "NEXTAUTH_SECRET": "@nextauth_secret"
-  },
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30

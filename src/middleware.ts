@@ -12,5 +12,6 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: ["/profile/:path*", "/admin/:path*"]
+  matcher: ["/profile/:path*"]
+  // Admin routes are not protected - remove "/admin/:path*" to allow free access
 }

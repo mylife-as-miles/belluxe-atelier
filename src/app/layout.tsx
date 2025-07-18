@@ -6,6 +6,7 @@ import TopNavbar from "@/components/layout/Navbar/TopNavbar";
 import Footer from "@/components/layout/Footer";
 import HolyLoader from "holy-loader";
 import Providers from "./providers";
+import "@/lib/disable-metamask";
 
 export const metadata: Metadata = {
   title: "Belluxe Atelier - Luxury Timepieces",
