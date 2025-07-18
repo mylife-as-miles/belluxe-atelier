@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 async function getProducts() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3001'}/api/products`, { 
+  const res = await fetch(`https://belluxe-atelier.vercel.app/api/products`, {
     cache: 'no-store' 
   });
   if (!res.ok) {
