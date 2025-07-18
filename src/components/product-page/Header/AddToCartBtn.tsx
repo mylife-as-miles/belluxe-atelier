@@ -32,9 +32,9 @@ const AddToCartBtn = ({ data }: { data: Product & { quantity: number } }) => {
       type="button"
       className="bg-black w-full ml-3 sm:ml-5 rounded-full h-11 md:h-[52px] text-sm sm:text-base text-white hover:bg-black/80 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed"
       onClick={handleAddToCart}
-      disabled={data.stock === 0}
+      disabled={(data.stock ?? 0) === 0}
     >
-      {data.stock === 0 ? "Out of Stock" : "Add to Cart"}
+      {(data.stock ?? 0) === 0 ? "Out of Stock" : "Add to Cart"}
     </button>
   );
 };

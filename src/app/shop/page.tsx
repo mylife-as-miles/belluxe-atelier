@@ -20,7 +20,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Product } from "@/types/product.types";
+import { Product, ProductCategory } from "@/types/product.types";
 
 export default async function ShopPage() {
   const productsRaw = await prisma.product.findMany({
@@ -30,14 +30,15 @@ export default async function ShopPage() {
     },
   });
 
-  const products = productsRaw.map(product => ({
+  const products: Product[] = productsRaw.map(product => ({
     ...product,
+    id: product.id.toString(),
     gallery: JSON.parse(product.gallery),
     discount: JSON.parse(product.discount),
     colors: JSON.parse(product.colors || "[]"),
     specifications: JSON.parse(product.specifications || "[]"),
     faqs: JSON.parse(product.faqs || "[]"),
-    category: product.category.slug as any,
+    category: product.category.slug as ProductCategory,
     subcategory: product.subcategory?.slug || "",
   }));
 
@@ -82,7 +83,7 @@ export default async function ShopPage() {
               </div>
             </div>
             <div className="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-              {products.map((product: Product) => (
+              {products.map((product) => (
                 <ProductCard key={product.id} data={product} />
               ))}
             </div>

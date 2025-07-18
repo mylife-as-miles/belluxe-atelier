@@ -13,7 +13,7 @@ const AddToCardSection = ({ data }: { data: Product }) => {
       <CartCounter
         onAdd={setQuantity}
         onRemove={setQuantity}
-        max={data.stock}
+        max={data.stock ?? 0}
       />
       <AddToCartBtn data={{ ...data, quantity }} />
     </div>

@@ -77,7 +77,7 @@ const Header = ({ data }: { data: Product }) => {
             )}
           </div>
           <div className="mb-5">
-            {data.stock > 0 ? (
+            {(data.stock ?? 0) > 0 ? (
               <p className="text-green-500">In Stock</p>
             ) : (
               <p className="text-red-500">Out of Stock</p>
