@@ -61,4 +61,11 @@ export type Product = {
   colors?: string[];
   specifications?: Specification[];
   faqs?: FAQ[];
+  reviews?: {
+    id: number;
+    user: string;
+    content: string;
+    rating: number;
+    date: string;
+  }[];
 };

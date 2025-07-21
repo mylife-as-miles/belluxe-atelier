@@ -8,10 +8,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import ReviewCard from "@/components/common/ReviewCard";
-import { reviewsData } from "@/lib/product-data";
 import Link from "next/link";
+import { Review } from "@/types/review.types";
 
-const ReviewsContent = () => {
+type ReviewsContentProps = {
+  reviews: Review[];
+  productId: string;
+};
+
+const ReviewsContent = ({ reviews, productId }: ReviewsContentProps) => {
   return (
     <section>
       <div className="flex items-center justify-between flex-col sm:flex-row mb-5 sm:mb-6">
@@ -19,7 +24,7 @@ const ReviewsContent = () => {
           <h3 className="text-xl sm:text-2xl font-bold text-black mr-2">
             All Reviews
           </h3>
-          <span className="text-sm sm:text-base text-black/60">(451)</span>
+          <span className="text-sm sm:text-base text-black/60">({reviews.length})</span>
         </div>
         <div className="flex items-center space-x-2.5">
           <Select defaultValue="latest">
@@ -42,9 +47,15 @@ const ReviewsContent = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5 sm:mb-9">
-        {reviewsData.map((review) => (
-          <ReviewCard key={review.id} data={review} isAction isDate />
-        ))}
+        {reviews.length > 0 ? (
+          reviews.map((review) => (
+            <ReviewCard key={review.id} data={review} isAction isDate />
+          ))
+        ) : (
+          <div className="col-span-2 text-center py-8 text-gray-500">
+            No reviews yet. Be the first to review this product!
+          </div>
+        )}
       </div>
       <div className="w-full px-4 sm:px-0 text-center">
         <Link

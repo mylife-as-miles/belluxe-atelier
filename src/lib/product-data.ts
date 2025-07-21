@@ -2,10 +2,11 @@ import { Product } from "@/types/product.types";
 import { Review } from "@/types/review.types";
 import { fallbackProductsData } from "@/lib/fallback-data";
 
-// Function to get products with fallback
+// Legacy function - now mostly used as fallback
+// Consider using direct Prisma queries in components instead
 export async function getProductsData() {
   try {
-    const baseUrl = 'https://belluxe-atelier.vercel.app';
+    const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
     const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
     if (!res.ok) {
       console.warn('API failed, using fallback data');
@@ -18,12 +19,13 @@ export async function getProductsData() {
   }
 }
 
-// Export static data for pages that need it immediately
+// Legacy exports - kept for backward compatibility
 export const newArrivalsData: Product[] = fallbackProductsData.slice(0, 4);
 export const topSellingData: Product[] = fallbackProductsData.slice(4, 8);
 export const relatedProductData: Product[] = fallbackProductsData.slice(8, 12);
 
-// Export reviews data
+// Legacy reviews data - now replaced with database reviews
+// This is kept for components that haven't been updated yet
 export const reviewsData: Review[] = [
   {
     id: 1,

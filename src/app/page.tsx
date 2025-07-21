@@ -3,14 +3,45 @@ import Brands from "@/components/homepage/Brands";
 import DressStyle from "@/components/homepage/DressStyle";
 import Header from "@/components/homepage/Header";
 import Reviews from "@/components/homepage/Reviews";
-import { Product } from "@/types/product.types";
-import { Review } from "@/types/review.types";
-import { getProductsData, reviewsData } from "@/lib/product-data";
+import { Product, ProductCategory } from "@/types/product.types";
+import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
-  const products = await getProductsData();
+  // Fetch products directly from database
+  const productsRaw = await prisma.product.findMany({
+    include: {
+      category: true,
+      subcategory: true,
+      reviews: true,
+    },
+    orderBy: {
+      createdAt: 'desc', // Get newest products first
+    },
+  });
+
+  // Transform database products to match Product type
+  const products: Product[] = productsRaw.map(product => ({
+    ...product,
+    id: product.id.toString(),
+    gallery: JSON.parse(product.gallery),
+    discount: JSON.parse(product.discount),
+    colors: JSON.parse(product.colors || "[]"),
+    specifications: JSON.parse(product.specifications || "[]"),
+    faqs: JSON.parse(product.faqs || "[]"),
+    category: product.category.name as ProductCategory,
+    subcategory: product.subcategory?.name || "",
+  }));
+
   const newArrivalsData = products.slice(0, 4);
   const topSellingData = products.slice(4, 8);
+
+  // Fetch reviews from database
+  const reviewsFromDb = await prisma.review.findMany({
+    take: 6,
+    orderBy: {
+      id: 'desc',
+    },
+  });
   return (
     <>
       <Header />
@@ -34,7 +65,7 @@ export default async function Home() {
         <div className="mb-[50px] sm:mb-20">
           <DressStyle />
         </div>
-        <Reviews data={reviewsData} />
+        <Reviews data={reviewsFromDb} />
       </main>
     </>
   );

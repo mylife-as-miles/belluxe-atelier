@@ -27,6 +27,7 @@ export default async function ProductPage({
     include: {
       category: true,
       subcategory: true,
+      reviews: true,
     },
   });
 
@@ -45,6 +46,7 @@ export default async function ProductPage({
     faqs: JSON.parse(productData.faqs || "[]"),
     category: productData.category.name as ProductCategory,
     subcategory: productData.subcategory?.name || "",
+    reviews: productData.reviews || [],
   };
 
   // Filter out the current product from related products and get up to 4 random ones
@@ -81,7 +83,7 @@ export default async function ProductPage({
         <section className="mb-11">
           <Header data={transformedProduct} />
         </section>
-        <Tabs />
+        <Tabs product={transformedProduct} />
       </div>
       {relatedProducts.length > 0 && (
         <div className="mb-[50px] sm:mb-20">
