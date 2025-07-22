@@ -139,25 +139,35 @@ export default function AdminOrdersPage() {
   const filteredOrders = orders;
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
+    <div className="space-y-6 p-4 md:p-6">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Orders Management</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">Orders Management</h1>
           <p className="text-muted-foreground">
             Manage customer orders and track fulfillment
           </p>
         </div>
+        <div className="flex gap-2">
+          <Button 
+            variant="outline" 
+            onClick={fetchOrders}
+            disabled={loading}
+            size="sm"
+          >
+            Refresh
+          </Button>
+        </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <Package className="h-4 w-4 text-blue-600" />
-              <div>
-                <p className="text-sm text-muted-foreground">Total Orders</p>
-                <p className="text-2xl font-bold">{orders.length}</p>
+              <Package className="h-4 w-4 text-blue-600 flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-sm text-muted-foreground truncate">Total Orders</p>
+                <p className="text-xl md:text-2xl font-bold">{orders.length}</p>
               </div>
             </div>
           </CardContent>
@@ -165,10 +175,10 @@ export default function AdminOrdersPage() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <DollarSign className="h-4 w-4 text-green-600" />
-              <div>
-                <p className="text-sm text-muted-foreground">Total Revenue</p>
-                <p className="text-2xl font-bold">
+              <DollarSign className="h-4 w-4 text-green-600 flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-sm text-muted-foreground truncate">Total Revenue</p>
+                <p className="text-lg md:text-2xl font-bold">
                   {formatCurrency(orders.reduce((sum, order) => sum + order.total, 0))}
                 </p>
               </div>
@@ -178,10 +188,10 @@ export default function AdminOrdersPage() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <Truck className="h-4 w-4 text-orange-600" />
-              <div>
-                <p className="text-sm text-muted-foreground">Pending Orders</p>
-                <p className="text-2xl font-bold">
+              <Truck className="h-4 w-4 text-orange-600 flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-sm text-muted-foreground truncate">Pending</p>
+                <p className="text-xl md:text-2xl font-bold">
                   {orders.filter(order => order.status === 'PENDING').length}
                 </p>
               </div>
@@ -191,10 +201,10 @@ export default function AdminOrdersPage() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4 text-purple-600" />
-              <div>
-                <p className="text-sm text-muted-foreground">Today&apos;s Orders</p>
-                <p className="text-2xl font-bold">
+              <Calendar className="h-4 w-4 text-purple-600 flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-sm text-muted-foreground truncate">Today</p>
+                <p className="text-xl md:text-2xl font-bold">
                   {orders.filter(order => 
                     new Date(order.createdAt).toDateString() === new Date().toDateString()
                   ).length}
@@ -208,24 +218,29 @@ export default function AdminOrdersPage() {
       {/* Filters */}
       <Card>
         <CardContent className="p-4">
-          <div className="flex gap-4 items-center">
-            <Filter className="h-4 w-4" />
-            <div className="flex gap-2">
-              <Label htmlFor="status-filter">Filter by Status:</Label>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-40">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Orders</SelectItem>
-                  <SelectItem value="PENDING">Pending</SelectItem>
-                  <SelectItem value="CONFIRMED">Confirmed</SelectItem>
-                  <SelectItem value="PROCESSING">Processing</SelectItem>
-                  <SelectItem value="SHIPPED">Shipped</SelectItem>
-                  <SelectItem value="DELIVERED">Delivered</SelectItem>
-                  <SelectItem value="CANCELLED">Cancelled</SelectItem>
-                </SelectContent>
-              </Select>
+          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+            <div className="flex items-center gap-2">
+              <Filter className="h-4 w-4" />
+              <span className="text-sm font-medium">Filters</span>
+            </div>
+            <div className="flex flex-wrap gap-4 items-center">
+              <div className="flex items-center gap-2">
+                <Label htmlFor="status-filter" className="text-sm whitespace-nowrap">Status:</Label>
+                <Select value={statusFilter} onValueChange={setStatusFilter}>
+                  <SelectTrigger className="w-40">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Orders</SelectItem>
+                    <SelectItem value="PENDING">Pending</SelectItem>
+                    <SelectItem value="CONFIRMED">Confirmed</SelectItem>
+                    <SelectItem value="PROCESSING">Processing</SelectItem>
+                    <SelectItem value="SHIPPED">Shipped</SelectItem>
+                    <SelectItem value="DELIVERED">Delivered</SelectItem>
+                    <SelectItem value="CANCELLED">Cancelled</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
         </CardContent>
@@ -233,93 +248,132 @@ export default function AdminOrdersPage() {
 
       {/* Orders List */}
       <Card>
-        <CardHeader>
-          <CardTitle>Orders ({filteredOrders.length})</CardTitle>
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center justify-between">
+            <span>Orders ({filteredOrders.length})</span>
+            <div className="text-sm text-muted-foreground font-normal">
+              {loading && "Loading..."}
+            </div>
+          </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0">
           {loading ? (
-            <div className="text-center py-8">Loading orders...</div>
+            <div className="text-center py-8">
+              <div className="animate-spin h-6 w-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
+              <p className="mt-2 text-muted-foreground">Loading orders...</p>
+            </div>
           ) : filteredOrders.length === 0 ? (
             <div className="text-center py-8 text-muted-foreground">
-              No orders found
+              <Package className="h-12 w-12 mx-auto mb-4 text-muted-foreground/50" />
+              <p>No orders found</p>
+              <p className="text-sm">Orders will appear here when customers place them</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="divide-y">
               {filteredOrders.map((order) => (
                 <div
                   key={order.id}
-                  className="border rounded-lg p-4 hover:bg-muted/50 transition-colors"
+                  className="p-4 hover:bg-muted/50 transition-colors"
                 >
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-mono text-sm">#{order.id}</span>
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className="font-mono text-sm bg-muted px-2 py-1 rounded">
+                          #{order.id.slice(-8)}
+                        </span>
                         {getStatusBadge(order.status, "status")}
                         {getStatusBadge(order.paymentStatus, "payment")}
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        {order.customerName} • {order.customerEmail}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {new Date(order.createdAt).toLocaleDateString()} • {formatCurrency(order.total)}
-                      </p>
+                      <div className="space-y-1">
+                        <p className="text-sm font-medium truncate">
+                          {order.customerName}
+                        </p>
+                        <p className="text-sm text-muted-foreground truncate">
+                          {order.customerEmail}
+                        </p>
+                        <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                          <span>{new Date(order.createdAt).toLocaleDateString()}</span>
+                          <span>•</span>
+                          <span className="font-medium text-foreground">
+                            {formatCurrency(order.total)}
+                          </span>
+                          <span>•</span>
+                          <span>{order.orderItems.length} item{order.orderItems.length !== 1 ? 's' : ''}</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-shrink-0">
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button 
                             variant="outline" 
                             size="sm"
+                            className="h-8"
                             onClick={() => setSelectedOrder(order)}
                           >
-                            <Eye className="h-4 w-4 mr-1" />
-                            View
+                            <Eye className="h-4 w-4 md:mr-1" />
+                            <span className="hidden md:inline">View</span>
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                           <DialogHeader>
-                            <DialogTitle>Order #{selectedOrder?.id}</DialogTitle>
+                            <DialogTitle className="flex items-center gap-2">
+                              <span>Order #{selectedOrder?.id?.slice(-8)}</span>
+                              <div className="flex gap-1">
+                                {selectedOrder && getStatusBadge(selectedOrder.status, "status")}
+                                {selectedOrder && getStatusBadge(selectedOrder.paymentStatus, "payment")}
+                              </div>
+                            </DialogTitle>
                           </DialogHeader>
                           {selectedOrder && (
-                            <div className="space-y-4">
-                              {/* Customer Info */}
-                              <div>
-                                <h4 className="font-semibold mb-2">Customer Information</h4>
-                                <div className="text-sm space-y-1">
-                                  <p>{selectedOrder.customerName}</p>
-                                  <p>{selectedOrder.customerEmail}</p>
-                                  {selectedOrder.customerPhone && <p>{selectedOrder.customerPhone}</p>}
+                            <div className="space-y-6">
+                              <div className="grid md:grid-cols-2 gap-6">
+                                {/* Customer Info */}
+                                <div>
+                                  <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                    <span>Customer Information</span>
+                                  </h4>
+                                  <div className="space-y-2 text-sm bg-muted/30 p-4 rounded-lg">
+                                    <p className="font-medium">{selectedOrder.customerName}</p>
+                                    <p className="text-muted-foreground">{selectedOrder.customerEmail}</p>
+                                    {selectedOrder.customerPhone && (
+                                      <p className="text-muted-foreground">{selectedOrder.customerPhone}</p>
+                                    )}
+                                    <p className="text-xs text-muted-foreground pt-2">
+                                      Order Date: {new Date(selectedOrder.createdAt).toLocaleString()}
+                                    </p>
+                                  </div>
                                 </div>
-                              </div>
 
-                              {/* Shipping Address */}
-                              <div>
-                                <h4 className="font-semibold mb-2">Shipping Address</h4>
-                                <div className="text-sm">
-                                  {(() => {
-                                    try {
-                                      const address = JSON.parse(selectedOrder.shippingAddress);
-                                      return (
-                                        <div className="space-y-1">
-                                          <p>{address.street}</p>
-                                          <p>{address.city}, {address.state} {address.zipCode}</p>
-                                          <p>{address.country}</p>
-                                        </div>
-                                      );
-                                    } catch {
-                                      return <p>{selectedOrder.shippingAddress}</p>;
-                                    }
-                                  })()}
+                                {/* Shipping Address */}
+                                <div>
+                                  <h4 className="font-semibold mb-3">Shipping Address</h4>
+                                  <div className="text-sm bg-muted/30 p-4 rounded-lg">
+                                    {(() => {
+                                      try {
+                                        const address = JSON.parse(selectedOrder.shippingAddress);
+                                        return (
+                                          <div className="space-y-1">
+                                            <p className="font-medium">{address.street}</p>
+                                            <p>{address.city}, {address.state} {address.zipCode}</p>
+                                            <p>{address.country}</p>
+                                          </div>
+                                        );
+                                      } catch {
+                                        return <p>{selectedOrder.shippingAddress}</p>;
+                                      }
+                                    })()}
+                                  </div>
                                 </div>
                               </div>
 
                               {/* Order Items */}
                               <div>
-                                <h4 className="font-semibold mb-2">Order Items</h4>
-                                <div className="space-y-2">
+                                <h4 className="font-semibold mb-3">Order Items</h4>
+                                <div className="space-y-3 max-h-60 overflow-y-auto">
                                   {selectedOrder.orderItems.map((item, index) => (
-                                    <div key={index} className="flex gap-3 p-2 border rounded">
-                                      <div className="relative h-12 w-12 overflow-hidden rounded">
+                                    <div key={index} className="flex gap-3 p-3 border rounded-lg hover:bg-muted/30 transition-colors">
+                                      <div className="relative h-16 w-16 overflow-hidden rounded-md flex-shrink-0">
                                         <Image
                                           src={item.product.srcUrl}
                                           alt={item.product.title}
@@ -327,12 +381,20 @@ export default function AdminOrdersPage() {
                                           className="object-cover"
                                         />
                                       </div>
-                                      <div className="flex-1">
-                                        <p className="text-sm font-medium">{item.product.title}</p>
-                                        {item.color && <p className="text-xs text-muted-foreground">Color: {item.color}</p>}
-                                        <div className="flex justify-between">
-                                          <span className="text-xs">Qty: {item.quantity}</span>
-                                          <span className="text-sm font-medium">{formatCurrency(item.price * item.quantity)}</span>
+                                      <div className="flex-1 min-w-0">
+                                        <p className="font-medium truncate">{item.product.title}</p>
+                                        {item.color && (
+                                          <p className="text-sm text-muted-foreground">
+                                            Color: {item.color}
+                                          </p>
+                                        )}
+                                        <div className="flex justify-between items-center mt-1">
+                                          <span className="text-sm text-muted-foreground">
+                                            Qty: {item.quantity} × {formatCurrency(item.price)}
+                                          </span>
+                                          <span className="font-semibold">
+                                            {formatCurrency(item.price * item.quantity)}
+                                          </span>
                                         </div>
                                       </div>
                                     </div>
@@ -340,14 +402,107 @@ export default function AdminOrdersPage() {
                                 </div>
                               </div>
 
-                              {/* Order Total */}
-                              <div>
-                                <h4 className="font-semibold mb-2">Order Summary</h4>
-                                <div className="space-y-2 text-sm">
-                                  <div className="flex justify-between">
-                                    <span>Subtotal</span>
-                                    <span>{formatCurrency(selectedOrder.subtotal)}</span>
+                              {/* Order Summary */}
+                              <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                  <h4 className="font-semibold mb-3">Order Summary</h4>
+                                  <div className="space-y-3 bg-muted/30 p-4 rounded-lg">
+                                    <div className="flex justify-between text-sm">
+                                      <span>Subtotal</span>
+                                      <span>{formatCurrency(selectedOrder.subtotal)}</span>
+                                    </div>
+                                    <div className="flex justify-between text-sm">
+                                      <span>Tax</span>
+                                      <span>{formatCurrency(selectedOrder.tax)}</span>
+                                    </div>
+                                    <div className="flex justify-between text-sm">
+                                      <span>Shipping</span>
+                                      <span>{selectedOrder.shipping === 0 ? "Free" : formatCurrency(selectedOrder.shipping)}</span>
+                                    </div>
+                                    <Separator />
+                                    <div className="flex justify-between font-semibold">
+                                      <span>Total</span>
+                                      <span>{formatCurrency(selectedOrder.total)}</span>
+                                    </div>
                                   </div>
+                                </div>
+
+                                {/* Status Updates */}
+                                <div>
+                                  <h4 className="font-semibold mb-3">Update Order</h4>
+                                  <div className="space-y-4 bg-muted/30 p-4 rounded-lg">
+                                    <div>
+                                      <Label className="text-sm">Order Status</Label>
+                                      <Select
+                                        value={selectedOrder.status}
+                                        onValueChange={(value) => updateOrderStatus(selectedOrder.id, "status", value)}
+                                        disabled={updatingOrder === selectedOrder.id}
+                                      >
+                                        <SelectTrigger className="mt-1">
+                                          <SelectValue />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                          <SelectItem value="PENDING">Pending</SelectItem>
+                                          <SelectItem value="CONFIRMED">Confirmed</SelectItem>
+                                          <SelectItem value="PROCESSING">Processing</SelectItem>
+                                          <SelectItem value="SHIPPED">Shipped</SelectItem>
+                                          <SelectItem value="DELIVERED">Delivered</SelectItem>
+                                          <SelectItem value="CANCELLED">Cancelled</SelectItem>
+                                          <SelectItem value="REFUNDED">Refunded</SelectItem>
+                                        </SelectContent>
+                                      </Select>
+                                    </div>
+                                    <div>
+                                      <Label className="text-sm">Payment Status</Label>
+                                      <Select
+                                        value={selectedOrder.paymentStatus}
+                                        onValueChange={(value) => updateOrderStatus(selectedOrder.id, "paymentStatus", value)}
+                                        disabled={updatingOrder === selectedOrder.id}
+                                      >
+                                        <SelectTrigger className="mt-1">
+                                          <SelectValue />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                          <SelectItem value="PENDING">Pending</SelectItem>
+                                          <SelectItem value="PAID">Paid</SelectItem>
+                                          <SelectItem value="FAILED">Failed</SelectItem>
+                                          <SelectItem value="REFUNDED">Refunded</SelectItem>
+                                        </SelectContent>
+                                      </Select>
+                                    </div>
+                                    <div>
+                                      <Label htmlFor="tracking" className="text-sm">Tracking Number</Label>
+                                      <Input
+                                        id="tracking"
+                                        value={selectedOrder.trackingNumber || ""}
+                                        onChange={(e) => updateOrderStatus(selectedOrder.id, "trackingNumber", e.target.value)}
+                                        placeholder="Enter tracking number"
+                                        disabled={updatingOrder === selectedOrder.id}
+                                        className="mt-1"
+                                      />
+                                    </div>
+                                    {updatingOrder === selectedOrder.id && (
+                                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                        <div className="animate-spin h-4 w-4 border-2 border-primary border-t-transparent rounded-full"></div>
+                                        Updating...
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
                                   <div className="flex justify-between">
                                     <span>Tax</span>
                                     <span>{formatCurrency(selectedOrder.tax)}</span>
