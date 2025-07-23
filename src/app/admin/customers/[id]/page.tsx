@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -99,7 +100,7 @@ export default function CustomerDetailPage({
         });
       } else if (response.status === 404) {
         router.push('/admin/customers');
-        toast.error("Customer not found");
+        alert("Customer not found");
       }
     } catch (error) {
       console.error('Error fetching customer:', error);
@@ -348,10 +349,12 @@ export default function CustomerDetailPage({
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="flex items-center gap-4">
                 {customer.image ? (
-                  <img 
-                    src={customer.image} 
-                    alt={customer.name || 'User'} 
-                    className="w-16 h-16 rounded-full object-cover"
+                  <Image
+                    src={customer.image}
+                    alt={customer.name || 'User'}
+                    width={64}
+                    height={64}
+                    style={{ objectFit: 'cover', borderRadius: '9999px' }}
                   />
                 ) : (
                   <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
@@ -507,10 +510,12 @@ export default function CustomerDetailPage({
                   <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {order.orderItems.slice(0, 3).map((item, index) => (
                       <div key={index} className="flex items-center gap-3 p-2 bg-gray-50 rounded">
-                        <img
+                        <Image
                           src={item.product.srcUrl}
                           alt={item.product.title}
-                          className="w-10 h-10 object-cover rounded"
+                          width={40}
+                          height={40}
+                          style={{ objectFit: 'cover', borderRadius: '0.375rem' }}
                         />
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium truncate">{item.product.title}</p>

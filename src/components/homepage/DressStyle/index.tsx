@@ -5,8 +5,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import DressStyleCard from "./DressStyleCard";
 import { useQuery } from "@tanstack/react-query";
-import { getCategories } from "@/lib/features/categories/apis";
-import { Category } from "@prisma/client";
+
+import { getCategories, Category } from "@/lib/features/categories/apis";
+
 
 // Spinner component inline since we can't find the UI component
 const SpinnerLoader = () => (

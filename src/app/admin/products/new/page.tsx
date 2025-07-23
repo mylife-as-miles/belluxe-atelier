@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+import Image from "next/image";
+
 export default function NewProductPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -262,10 +264,13 @@ export default function NewProductPage() {
               )}
               {formData.srcUrl && (
                 <div className="mt-2">
-                  <img 
-                    src={formData.srcUrl} 
-                    alt="Preview" 
+                  <Image
+                    src={formData.srcUrl}
+                    alt="Preview"
+                    width={128}
+                    height={128}
                     className="h-32 w-32 object-cover rounded-md border"
+                    unoptimized
                   />
                 </div>
               )}
@@ -408,10 +413,13 @@ export default function NewProductPage() {
               </div>
               {url && (
                 <div className="mt-2">
-                  <img 
-                    src={url} 
-                    alt={`Gallery ${index + 1}`} 
+                  <Image
+                    src={url}
+                    alt={`Gallery ${index + 1}`}
+                    width={96}
+                    height={96}
                     className="h-24 w-24 object-cover rounded-md border"
+                    unoptimized
                   />
                 </div>
               )}

@@ -35,6 +35,8 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
+import Image from "next/image";
+
 type Customer = {
   id: string;
   name: string | null;
@@ -73,14 +75,15 @@ export default function CustomersPage() {
     // Search filter
     if (searchTerm) {
       filtered = filtered.filter(customer =>
-        customer.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        customer.email?.toLowerCase().includes(searchTerm.toLowerCase())
+        (customer: Customer) =>
+          customer.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          customer.email?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
     // Role filter
     if (roleFilter !== "all") {
-      filtered = filtered.filter(customer => customer.role === roleFilter);
+      filtered = filtered.filter((customer: Customer) => customer.role === roleFilter);
     }
 
     setFilteredCustomers(filtered);
@@ -175,10 +178,10 @@ export default function CustomersPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {customers.filter(c => c.emailVerified).length}
+              {customers.filter((c: Customer) => c.emailVerified).length}
             </div>
             <p className="text-xs text-gray-500 mt-1">
-              {Math.round((customers.filter(c => c.emailVerified).length / customers.length) * 100)}% verified
+              {Math.round((customers.filter((c: Customer) => c.emailVerified).length / customers.length) * 100)}% verified
             </p>
           </CardContent>
         </Card>
@@ -188,7 +191,7 @@ export default function CustomersPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {customers.filter(c => c._count.orders > 0).length}
+              {customers.filter((c: Customer) => c._count.orders > 0).length}
             </div>
             <p className="text-xs text-gray-500 mt-1">Have made at least 1 order</p>
           </CardContent>
@@ -199,7 +202,7 @@ export default function CustomersPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {customers.filter(c => c.role === 'ADMIN').length}
+              {customers.filter((c: Customer) => c.role === 'ADMIN').length}
             </div>
             <p className="text-xs text-gray-500 mt-1">Administrative access</p>
           </CardContent>
@@ -216,7 +219,7 @@ export default function CustomersPage() {
               <Input
                 placeholder="Search customers by name or email..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
                 className="pl-10"
               />
             </div>
@@ -293,10 +296,13 @@ export default function CustomersPage() {
                   <TableCell>
                     <div className="flex items-center gap-3">
                       {customer.image ? (
-                        <img 
-                          src={customer.image} 
-                          alt={customer.name || 'User'} 
+                        <Image
+                          src={customer.image}
+                          alt={customer.name || 'User'}
+                          width={32}
+                          height={32}
                           className="w-8 h-8 rounded-full"
+                          unoptimized
                         />
                       ) : (
                         <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
@@ -414,10 +420,13 @@ export default function CustomersPage() {
                 {/* Customer Info */}
                 <div className="flex items-center gap-4">
                   {selectedCustomer.image ? (
-                    <img 
-                      src={selectedCustomer.image} 
-                      alt={selectedCustomer.name || 'User'} 
+                    <Image
+                      src={selectedCustomer.image}
+                      alt={selectedCustomer.name || 'User'}
+                      width={64}
+                      height={64}
                       className="w-16 h-16 rounded-full"
+                      unoptimized
                     />
                   ) : (
                     <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">

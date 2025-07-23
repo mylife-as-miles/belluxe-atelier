@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -340,10 +341,13 @@ export default function ProductsPage() {
                     <TableRow key={product.id}>
                       <TableCell>
                         <div className="flex items-center gap-3">
-                          <img 
-                            src={product.srcUrl} 
+                          <Image
+                            src={product.srcUrl}
                             alt={product.title}
+                            width={48}
+                            height={48}
                             className="w-12 h-12 object-cover rounded-md"
+                            unoptimized
                           />
                           <div>
                             <p className="font-medium text-gray-900 truncate max-w-[200px]">
@@ -405,32 +409,6 @@ export default function ProductsPage() {
           </div>
         )}
       </Card>
-    </div>
-  );
-}
-                      <div className="text-sm font-medium text-gray-900">{product.title}</div>
-                      <div className="text-sm text-gray-500">
-                        Stock: {product.stock !== null ? product.stock : 'N/A'}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex space-x-2">
-                    <Link 
-                      href={`/admin/products/${product.id}/edit`}
-                      className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600 transition-colors"
-                    >
-                      Edit
-                    </Link>
-                    <button className="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition-colors">
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }

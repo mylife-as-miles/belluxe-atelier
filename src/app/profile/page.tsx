@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
+import Image from "next/image";
+
 interface OrderItem {
   id: number;
   quantity: number;
@@ -181,10 +183,13 @@ export default function Profile() {
                   <div className="space-y-3">
                     {order.orderItems.map((item) => (
                       <div key={item.id} className="flex items-center space-x-4">
-                        <img
+                        <Image
                           src={item.product.srcUrl}
                           alt={item.product.title}
+                          width={64}
+                          height={64}
                           className="w-16 h-16 object-cover rounded-md"
+                          unoptimized
                         />
                         <div className="flex-1">
                           <p className="font-medium text-gray-900">

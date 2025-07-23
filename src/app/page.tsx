@@ -20,7 +20,7 @@ export default async function Home() {
   });
 
   // Transform database products to match Product type
-  const products: Product[] = productsRaw.map(product => ({
+  const products: Product[] = productsRaw.map((product: any) => ({
     ...product,
     id: product.id.toString(),
     gallery: JSON.parse(product.gallery),

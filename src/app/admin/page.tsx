@@ -1,59 +1,156 @@
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { 
+  Package, 
+  Folder, 
+  Users, 
+  ShoppingCart,
+  BarChart3,
+  Settings
+} from "lucide-react";
 
 export default function AdminDashboard() {
+  const adminCards = [
+    {
+      title: "Products",
+      description: "Manage your product catalog",
+      href: "/admin/products",
+      icon: Package,
+      color: "bg-blue-500",
+      available: true
+    },
+    {
+      title: "Categories", 
+      description: "Manage product categories and subcategories",
+      href: "/admin/categories",
+      icon: Folder,
+      color: "bg-green-500",
+      available: true
+    },
+    {
+      title: "Customers",
+      description: "Manage customer data and profiles",
+      href: "/admin/customers",
+      icon: Users,
+      color: "bg-purple-500",
+      available: true
+    },
+    {
+      title: "Orders",
+      description: "Track and manage customer orders",
+      href: "/admin/orders",
+      icon: ShoppingCart,
+      color: "bg-orange-500",
+      available: true
+    },
+    {
+      title: "Analytics",
+      description: "View sales and performance metrics",
+      href: "/admin/analytics",
+      icon: BarChart3,
+      color: "bg-indigo-500",
+      available: false
+    },
+    {
+      title: "Settings",
+      description: "Configure store settings and preferences",
+      href: "/admin/settings",
+      icon: Settings,
+      color: "bg-gray-500",
+      available: false
+    }
+  ];
+
   return (
-    <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+    <div className="space-y-8 p-4 md:p-6">
+      <div className="text-center md:text-left">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Admin Dashboard</h1>
         <p className="mt-2 text-gray-600">Welcome to the Belluxe Atelier admin panel</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Link href="/admin/products" className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-shadow">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
-              </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {adminCards.map((card) => {
+          const IconComponent = card.icon;
+          
+          if (card.available) {
+            return (
+              <Link 
+                key={card.title}
+                href={card.href}
+                className="block group hover:scale-105 transition-transform duration-200"
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow duration-200">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className={`flex-shrink-0 w-12 h-12 ${card.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                          {card.title}
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500">
+                          {card.description}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            );
+          }
+          
+          return (
+            <div 
+              key={card.title}
+              className="block group cursor-not-allowed opacity-60"
+            >
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className={`flex-shrink-0 w-12 h-12 ${card.color} rounded-lg flex items-center justify-center`}>
+                      <IconComponent className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-semibold text-gray-900">
+                        {card.title}
+                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                          Coming Soon
+                        </span>
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-500">
+                        {card.description}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-            <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">Products</h3>
-              <p className="text-sm text-gray-500">Manage your product catalog</p>
-            </div>
+          );
+        })}
+      </div>
+      
+      <div className="mt-8 p-4 md:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+        <h2 className="text-lg font-semibold text-gray-900 mb-2">Quick Stats</h2>
+        <p className="text-sm text-gray-600 mb-4">
+          Your store overview will appear here once you start adding products and receiving orders.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="text-center p-3 bg-white rounded-lg shadow-sm">
+            <div className="text-2xl font-bold text-blue-600">0</div>
+            <div className="text-xs text-gray-500">Products</div>
           </div>
-        </Link>
-
-        <Link href="/admin/categories" className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-shadow">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14-7H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z" />
-                </svg>
-              </div>
-            </div>
-            <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">Categories</h3>
-              <p className="text-sm text-gray-500">Manage product categories and subcategories</p>
-            </div>
+          <div className="text-center p-3 bg-white rounded-lg shadow-sm">
+            <div className="text-2xl font-bold text-green-600">0</div>
+            <div className="text-xs text-gray-500">Orders</div>
           </div>
-        </Link>
-
-        <div className="bg-white p-6 rounded-lg shadow">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-            </div>
-            <div className="ml-4">
-              <h3 className="text-lg font-medium text-gray-900">Customers</h3>
-              <p className="text-sm text-gray-500">Manage customer data (Coming Soon)</p>
-            </div>
+          <div className="text-center p-3 bg-white rounded-lg shadow-sm">
+            <div className="text-2xl font-bold text-purple-600">0</div>
+            <div className="text-xs text-gray-500">Customers</div>
+          </div>
+          <div className="text-center p-3 bg-white rounded-lg shadow-sm">
+            <div className="text-2xl font-bold text-orange-600">₦0</div>
+            <div className="text-xs text-gray-500">Revenue</div>
           </div>
         </div>
       </div>

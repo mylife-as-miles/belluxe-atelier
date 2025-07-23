@@ -181,9 +181,10 @@ export default function CartPage() {
                   <div className="relative w-full">
                     <MdOutlineLocalOffer className="absolute left-3 top-1/2 -translate-y-1/2 text-black/40" />
                     <InputGroup
-                      placeholder="Add promo code"
                       className="pl-9"
-                    />
+                    >
+                      <InputGroup.Input placeholder="Add promo code" />
+                    </InputGroup>
                   </div>
                   <Button className="font-bold">Apply</Button>
                 </div>
@@ -205,7 +206,7 @@ export default function CartPage() {
               Your cart is empty
             </h2>
             <p className="text-black/60 mb-6">
-              Looks like you haven't added anything to your cart yet.
+              Looks like you haven&apos;t added anything to your cart yet.
             </p>
             <Button asChild>
               <Link href="/shop">Continue Shopping</Link>

@@ -10,7 +10,7 @@ export async function generateStaticParams() {
   const products = await prisma.product.findMany({
     select: { id: true },
   });
-  return products.map((product) => ({
+  return products.map((product: any) => ({
     slug: [product.id.toString()],
   }));
 }
@@ -63,7 +63,7 @@ export default async function ProductPage({
     take: 4,
   });
 
-  const relatedProducts: Product[] = relatedProductsRaw.map(product => ({
+  const relatedProducts: Product[] = relatedProductsRaw.map((product: any) => ({
     ...product,
     id: product.id.toString(),
     gallery: JSON.parse(product.gallery),

@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
-const prisma = new PrismaClient();
+
 
 export async function GET(
   request: Request,
@@ -24,7 +24,6 @@ export async function GET(
         email: true,
         role: true,
         emailVerified: true,
-        createdAt: true,
         image: true,
         orders: {
           select: {
@@ -90,7 +89,6 @@ export async function PUT(
         email: true,
         role: true,
         emailVerified: true,
-        createdAt: true,
         image: true,
       }
     });
