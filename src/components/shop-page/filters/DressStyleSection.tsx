@@ -8,46 +8,30 @@ import {
 import Link from "next/link";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-type JewelryCategory = {
+type FashionBagCategory = {
   title: string;
   slug: string;
 };
 
-const jewelryCategoriesData: JewelryCategory[] = [
+const fashionBagCategoriesData: FashionBagCategory[] = [
   {
-    title: "Earrings",
+    title: "Tote Bags",
     slug: "/shop",
   },
   {
-    title: "Necklaces",
+    title: "Shoulder Bags",
     slug: "/shop",
   },
   {
-    title: "Rings",
+    title: "Crossbody Bags",
     slug: "/shop",
   },
   {
-    title: "Bracelets",
+    title: "Clutches",
     slug: "/shop",
   },
   {
-    title: "Watches",
-    slug: "/shop",
-  },
-  {
-    title: "Anklets",
-    slug: "/shop",
-  },
-  {
-    title: "Brooches & Pins",
-    slug: "/shop",
-  },
-  {
-    title: "Body Jewelry",
-    slug: "/shop",
-  },
-  {
-    title: "Jewelry Sets",
+    title: "Backpacks",
     slug: "/shop",
   },
 ];
@@ -57,11 +41,11 @@ const DressStyleSection = () => {
     <Accordion type="single" collapsible defaultValue="filter-style">
       <AccordionItem value="filter-style" className="border-none">
         <AccordionTrigger className="text-black font-bold text-xl hover:no-underline p-0 py-0.5">
-          Jewelry Category
+          Fashion Bag Category
         </AccordionTrigger>
         <AccordionContent className="pt-4 pb-0">
           <div className="flex flex-col text-black/60 space-y-0.5">
-            {jewelryCategoriesData.map((category, idx) => (
+            {fashionBagCategoriesData.map((category, idx) => (
               <Link
                 key={idx}
                 href={category.slug}

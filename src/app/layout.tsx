@@ -9,8 +9,8 @@ import Providers from "./providers";
 import "@/lib/disable-metamask";
 
 export const metadata: Metadata = {
-  title: "Belluxe Atelier - Luxury Timepieces",
-  description: "Discover premium watches and luxury timepieces at Belluxe Atelier. Find the perfect watch for every occasion.",
+  title: "Nessa Atelier - Fashion Bags",
+  description: "Discover premium Fashion Bags at Nessa Atelier. Find the perfect bag for every occasion.",
 };
 
 export const viewport: Viewport = {

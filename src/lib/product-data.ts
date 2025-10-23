@@ -31,14 +31,14 @@ export const reviewsData: Review[] = [
     id: 1,
     user: "Alex K.",
     content:
-      '"Finding jewelry that aligns with my personal style used to be a challenge until I discovered Belluxe Atelier. The range of pieces they offer is truly remarkable, catering to a variety of tastes and occasions."',
+      '"Finding Fashion Bags that aligns with my personal style used to be a challenge until I discovered Nessa Atelier. The range of pieces they offer is truly remarkable, catering to a variety of tastes and occasions."',
     rating: 5,
     date: "August 14, 2023",
   },
   {
     id: 2,
     user: "Sarah M.",
-    content: `"I'm blown away by the quality and craftsmanship of the jewelry I received from Belluxe Atelier. From elegant earrings to statement necklaces, every piece I've bought has exceeded my expectations."`,
+    content: `"I'm blown away by the quality and craftsmanship of the Fashion Bags I received from Nessa Atelier. From elegant earrings to statement necklaces, every piece I've bought has exceeded my expectations."`,
     rating: 5,
     date: "August 15, 2023",
   },
@@ -59,7 +59,7 @@ export const reviewsData: Review[] = [
   {
     id: 5,
     user: "Liam K.",
-    content: `"This jewelry set is a fusion of comfort and creativity. The materials are premium, and the design speaks volumes about the designer's skill. It's like wearing a piece of art that reflects my passion for both design and craftsmanship."`,
+    content: `"This Fashion Bags set is a fusion of comfort and creativity. The materials are premium, and the design speaks volumes about the designer's skill. It's like wearing a piece of art that reflects my passion for both design and craftsmanship."`,
     rating: 5,
     date: "August 18, 2023",
   },
