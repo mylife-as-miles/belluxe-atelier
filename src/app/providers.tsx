@@ -6,10 +6,13 @@ import { SessionProvider } from "next-auth/react";
 import { makeStore } from "../lib/store";
 import { PersistGate } from "redux-persist/integration/react";
 import SpinnerbLoader from "@/components/ui/SpinnerbLoader";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 type Props = {
   children: React.ReactNode;
 };
+
+const queryClient = new QueryClient();
 
 const Providers = ({ children }: Props) => {
   const { store, persistor } = makeStore();
@@ -25,7 +28,7 @@ const Providers = ({ children }: Props) => {
           }
           persistor={persistor}
         >
-          {children}
+          <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
         </PersistGate>
       </Provider>
     </SessionProvider>

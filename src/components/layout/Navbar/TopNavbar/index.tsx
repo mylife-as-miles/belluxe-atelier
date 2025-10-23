@@ -23,39 +23,9 @@ const data: NavMenu = [
     children: [
       {
         id: 11,
-        label: "Watches",
+        label: "Fashion Bags",
         url: "/shop",
-        description: "Sophisticated timepieces for every occasion",
-      },
-      {
-        id: 12,
-        label: "Earrings",
-        url: "/shop",
-        description: "Elegant earrings from studs to statement pieces",
-      },
-      {
-        id: 13,
-        label: "Necklaces",
-        url: "/shop",
-        description: "Beautiful necklaces and pendants for every style",
-      },
-      {
-        id: 14,
-        label: "Rings",
-        url: "/shop",
-        description: "Stunning rings from everyday to special occasions",
-      },
-      {
-        id: 15,
-        label: "Bracelets",
-        url: "/shop",
-        description: "Stylish bracelets and bangles for any look",
-      },
-      {
-        id: 16,
-        label: "Jewelry Sets",
-        url: "/shop",
-        description: "Complete jewelry sets for a coordinated look",
+        description: "Stylish bags for every occasion",
       },
     ],
   },
@@ -128,7 +98,7 @@ const TopNavbar = () => {
           <InputGroup.Input
             type="search"
             name="search"
-            placeholder="Search for jewelry, watches, rings..."
+            placeholder="Search for Fashion Bags..."
             className="bg-transparent placeholder:text-black/40"
           />
         </InputGroup>
