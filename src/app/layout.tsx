@@ -9,8 +9,8 @@ import Providers from "./providers";
 import "@/lib/disable-metamask";
 
 export const metadata: Metadata = {
-  title: "Nessa Atelier - Fashion Bags",
-  description: "Discover premium Fashion Bags at Nessa Atelier. Find the perfect bag for every occasion.",
+  title: "Ness Atelier - Fashion Bags",
+  description: "Discover premium Fashion Bags at Ness Atelier. Find the perfect bag for every occasion.",
 };
 
 export const viewport: Viewport = {

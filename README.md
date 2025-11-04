@@ -1,10 +1,10 @@
-[![Nessa Atelier](https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.0.3&q=85&w=1200&h=630&fit=crop)](https://belluxe-atelier.vercel.app/)
+[![Ness Atelier](https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%D&ixlib=rb-4.0.3&q=85&w=1200&h=630&fit=crop)](https://belluxe-atelier.vercel.app/)
 
-# 🏆 Nessa Atelier
+# 🏆 Ness Atelier
 
 > A premium e-commerce platform for Fashion Bags, built with modern web technologies.
 
-**Nessa Atelier** is a comprehensive, production-ready e-commerce application specializing in Fashion Bags. Built with **Next.js 14**, **TypeScript**, **Prisma**, and **PostgreSQL**, it offers a seamless shopping experience with advanced features like real-time inventory management, secure authentication, and responsive design.
+**Ness Atelier** is a comprehensive, production-ready e-commerce application specializing in Fashion Bags. Built with **Next.js 14**, **TypeScript**, **Prisma**, and **PostgreSQL**, it offers a seamless shopping experience with advanced features like real-time inventory management, secure authentication, and responsive design.
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.0-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -37,7 +37,7 @@
 
 ## 📋 Table of Contents
 
-- [🏆 Nessa Atelier](#-nessa-atelier)
+- [🏆 Ness Atelier](#-nessa-atelier)
   - [✨ Features](#-features)
   - [📋 Table of Contents](#-table-of-contents)
   - [🚀 Quick Start](#-quick-start)
@@ -53,7 +53,7 @@
 
 ## 🚀 Quick Start
 
-Get Nessa Atelier running locally in minutes:
+Get Ness Atelier running locally in minutes:
 
 ```bash
 # Clone the repository
@@ -297,7 +297,7 @@ POST   /api/orders                # Create new order
 
 ## 🤝 Contributing
 
-We welcome contributions to Nessa Atelier! Here's how you can help:
+We welcome contributions to Ness Atelier! Here's how you can help:
 
 ### Development Workflow
 
@@ -351,7 +351,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```
 MIT License
 
-Copyright (c) 2025 Nessa Atelier
+Copyright (c) 2025 Ness Atelier
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,15 +1,11 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import DressStyleCard from "./DressStyleCard";
-import { useQuery } from "@tanstack/react-query";
-
 import { getCategories, Category } from "@/lib/features/categories/apis";
 
-
-// Spinner component inline since we can't find the UI component
 const SpinnerLoader = () => (
   <div className="flex justify-center items-center py-8">
     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
@@ -17,19 +13,28 @@ const SpinnerLoader = () => (
 );
 
 const DressStyle = () => {
-  const {
-    data: categories,
-    isPending,
-    isError,
-  } = useQuery<Category[]>({
-    queryKey: ["categories"],
-    queryFn: getCategories,
-  });
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  if (isPending) return <SpinnerLoader />;
-  if (isError) return <div className="text-center py-8 text-red-500">Error fetching categories</div>;
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await getCategories();
+        setCategories(data);
+      } catch (err) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Fallback images for categories without images
+    fetchCategories();
+  }, []);
+
+  if (loading) return <SpinnerLoader />;
+  if (error) return <div className="text-center py-8 text-red-500">Error fetching categories</div>;
+
   const fallbackImages = [
     "https://images.unsplash.com/photo-1523275335684-37898b6baf30?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHx3YXRjaHxlbnwwfHx8fDE3NTI3MjA0NDd8MA&ixlib=rb-4.0.3&q=85&w=400&h=200&fit=crop",
     "https://images.unsplash.com/photo-1611652022419-a9419f74343d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwyfHxqZXdlbHJ5fGVufDB8fHx8MTc1MjcyMDQ0N3ww&ixlib=rb-4.0.3&q=85&w=400&h=200&fit=crop",
