@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -83,11 +83,7 @@ export default function CustomerDetailPage({
   });
   const router = useRouter();
 
-  useEffect(() => {
-    fetchCustomer();
-  }, [params.id]);
-
-  const fetchCustomer = async () => {
+  const fetchCustomer = useCallback(async () => {
     try {
       const response = await fetch(`/api/admin/customers/${params.id}`);
       if (response.ok) {
@@ -108,7 +104,11 @@ export default function CustomerDetailPage({
     } finally {
       setLoading(false);
     }
-  };
+  }, [params.id, router]);
+
+  useEffect(() => {
+    fetchCustomer();
+  }, [fetchCustomer]);
 
   const handleUpdateCustomer = async () => {
     try {
@@ -472,7 +472,7 @@ export default function CustomerDetailPage({
             <div className="text-center py-8">
               <ShoppingBag className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">No Orders Yet</h3>
-              <p className="text-gray-600">This customer hasn't placed any orders.</p>
+              <p className="text-gray-600">This customer hasn&apos;t placed any orders.</p>
             </div>
           ) : (
             <div className="space-y-4">
