@@ -3,7 +3,7 @@ export type Discount = {
   percentage: number;
 };
 
-export type ProductCategory = "fashion-bags";
+export type ProductCategory = "fashion-bags" | "watches" | "earrings" | "necklaces" | "rings" | "bracelets" | "brooches-pins";
 
 export type ProductSubcategory = {
   "fashion-bags":

@@ -31,14 +31,14 @@ export const reviewsData: Review[] = [
     id: 1,
     user: "Alex K.",
     content:
-      '"Finding Fashion Bags that aligns with my personal style used to be a challenge until I discovered Ness Atelier. The range of pieces they offer is truly remarkable, catering to a variety of tastes and occasions."',
+      '"Finding Fashion Bags that aligns with my personal style used to be a challenge until I discovered CORDÉLIA. The range of pieces they offer is truly remarkable, catering to a variety of tastes and occasions."',
     rating: 5,
     date: "August 14, 2023",
   },
   {
     id: 2,
     user: "Sarah M.",
-    content: `"I'm blown away by the quality and craftsmanship of the Fashion Bags I received from Ness Atelier. From elegant earrings to statement necklaces, every piece I've bought has exceeded my expectations."`,
+    content: `"I'm blown away by the quality and craftsmanship of the Fashion Bags I received from CORDÉLIA. From elegant earrings to statement necklaces, every piece I've bought has exceeded my expectations."`,
     rating: 5,
     date: "August 15, 2023",
   },
