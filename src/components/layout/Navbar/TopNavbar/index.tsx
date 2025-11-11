@@ -67,7 +67,7 @@ const TopNavbar = () => {
               "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10",
             ])}
           >
-            BELLUXE ATELIER
+            CORDÉLIA
           </Link>
         </div>
         <NavigationMenu className="hidden md:flex mr-2 lg:mr-7">
