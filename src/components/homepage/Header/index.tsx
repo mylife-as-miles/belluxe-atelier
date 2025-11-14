@@ -96,7 +96,10 @@ const Header = () => {
           transition={{ delay: 2.3, duration: 0.8 }}
           className="relative md:px-4 min-h-[448px] md:min-h-[428px]"
         >
+
           <div data-us-project="DuBavphBmrW8vHV7TMfL" data-us-scale="1" className="w-full h-full"></div>
+
+          <div data-us-project="DuBavphBmrW8vHV7TMfL" style={{width:"1080px", height: "1080px"}}></div>
         </motion.section>
       </div>
     </header>
