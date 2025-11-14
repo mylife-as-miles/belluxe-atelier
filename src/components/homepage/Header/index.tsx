@@ -94,24 +94,9 @@ const Header = () => {
           whileInView={{ y: "0", opacity: 1, rotate: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 2.3, duration: 0.8 }}
-          className="relative md:px-4 min-h-[448px] md:min-h-[428px] bg-cover bg-center bg-no-repeat bg-[url('https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop')] md:bg-[url('https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop')]"
+          className="relative md:px-4 min-h-[448px] md:min-h-[428px]"
         >
-          <Image
-            priority
-            src="/icons/big-star.svg"
-            height={104}
-            width={104}
-            alt="big star"
-            className="absolute right-7 xl:right-0 top-12 max-w-[76px] max-h-[76px] lg:max-w-24 lg:max-h-max-w-24 xl:max-w-[104px] xl:max-h-[104px] animate-[spin_4s_infinite]"
-          />
-          <Image
-            priority
-            src="/icons/small-star.svg"
-            height={56}
-            width={56}
-            alt="small star"
-            className="absolute left-7 md:left-0 top-36 sm:top-64 md:top-44 lg:top-56 max-w-11 max-h-11 md:max-w-14 md:max-h-14 animate-[spin_3s_infinite]"
-          />
+          <div data-us-project="DuBavphBmrW8vHV7TMfL" style={{width:"1080px", height: "1080px"}}></div>
         </motion.section>
       </div>
     </header>
